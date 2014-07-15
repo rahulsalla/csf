@@ -1,0 +1,327 @@
+a:link, a:visited, a:active 
+{
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
+a:hover 
+{
+	padding: 0;
+	margin: 0;
+	border: none;
+	text-decoration: underline;	
+}
+
+
+.clear {
+	clear: both;
+}
+
+.resource_template {
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
+.resource_template:hover {
+	padding: 0;
+	margin: 0;
+	border: none;
+	text-decoration: underline;
+}
+
+
+#login {
+	float: right;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#login li {
+	float: left;
+	border-right: thin solid;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+#login #last { 
+	border-right: none;
+	padding-right: 0;
+}
+	
+#menu {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	padding-bottom: 1em;
+}
+#menu li {
+	float: left;
+	border-left: thin solid;
+	padding-left: 1em;
+	padding-right: 1em;
+	
+}
+
+#menu li:hover {
+	float: left;
+	border-left: thin solid;
+	padding-left: 1em;
+	padding-right: 1em;
+	text-decoration: underline;	
+}
+
+
+#menu #management {
+	border-left: none;
+	padding-left: 0;
+}
+
+#menu #refresh {
+	border-left: none;
+}
+
+#menu a, #menu a:visited {
+	color: blue;
+}
+
+#footer {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	font-size: small;
+	padding-top: 1em;
+	text-align: center;
+}
+#footer li {
+	display: inline;
+	border-left: thin solid;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+#footer #first {
+	border-left: none;
+	padding-left: 0;
+}
+#footer a, #menu a:visited {
+	color: blue;
+}
+
+body {
+	background: white none no-repeat fixed left top;
+	padding-left: 250px;
+	height: 100%;
+}
+
+#workspace {
+	border-left: solid 1px black;
+	height: 100%;
+}
+.node1 {
+	position: absolute;
+	background: rgb(100, 230, 100);
+	/*background: rgb(110, 116, 198);*/
+	color: white;
+	width: 110px;
+	z-index:1;
+}
+
+.node {
+	position: absolute;
+	background: rgb(250, 250, 120);
+	/*background: rgb(110, 116, 198);*/
+	color: black;
+	width: 110px;
+	z-index:1;
+}
+
+.node4 {
+	position: absolute;
+	background: rgb(100, 149, 237);
+	/*background: rgb(110, 116, 198);*/
+	color: white;
+	width: 110px;
+	z-index:1;
+}
+
+.node5 {
+	position: absolute;
+	background: rgb(233, 150, 122);
+	/*background: rgb(110, 116, 198);*/
+	color: white;
+	width: 110px;
+	z-index:1;
+}
+
+.template {
+	position: absolute;
+	background: rgb(100, 230, 100);
+	/*background: rgb(110, 116, 198);*/
+	color: white;
+	width: 240px;
+	z-index:1;
+}
+
+.resource {
+	background: rgb(45, 86, 80);
+	/*background: rgb(110, 116, 198);*/
+	margin-bottom: 10px;
+	color: white;
+	z-index:1;
+}
+
+.in {
+	position: absolute;
+	top:0px;
+	left:0px;
+	background: rgb(110, 100, 100);
+	color: white;
+	width: 10px;
+}
+
+.queue {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+.server {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+.title {
+	border-bottom: solid 1px;
+}
+
+.out {
+	position: absolute;
+	top:0px;
+	left:100px;
+	background: rgb(110, 100, 100);
+	color: white;
+	width: 10px;
+}
+
+.node p {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.node .input {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: left;
+	z-index: 1;
+}
+.node .output {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: right;
+	z-index: 1;
+}
+
+
+
+.node1 p {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.node1 .input {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: left;
+	z-index: 1;
+}
+.node1 .output {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: right;
+	z-index: 1;
+}
+
+
+.node4 p {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.node4 .input {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: left;
+	z-index: 1;
+}
+.node4 .output {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: right;
+	z-index: 1;
+}
+
+.node5 p {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.node5 .input {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: left;
+	z-index: 1;
+}
+.node5 .output {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-align: right;
+	z-index: 1;
+}
+
+
+
+
+
+.edge {
+	position: absolute;
+	background: transparent;
+	color: #FF0000;
+	z-index:0;
+}
+.details {
+	position: absolute;
+	width: 240px;
+	background: #EEEEEE;
+	overflow: auto;
+	left: 10px;
+	top: 102px;
+	height: inherit;
+}
+
+.logo {
+	position: absolute;
+	width: 240px;
+	background: #CCDAFF;
+	overflow: hidden;
+	left: 10px;
+	top: 5px;
+	font-size: 23px;
+}
+
+
+.link p{
+	font-weight:bold;
+}
