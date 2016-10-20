@@ -1,0 +1,29 @@
+{
+  "name": "csf",
+  "authors": [
+    "Gregory Moon <grmoon@mainex1.asu.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "scriptaculous-bower": "^1.9.0",
+    "jscolor": "^1.4.2",
+    "d3": "^3.5.16",
+    "ace": "^1.2.3",
+    "ExplorerCanvas": "excanvas#*",
+    "openlayers": "*",
+    "cubism": "^1.6.0"
+  }
+}

@@ -1,5 +1,6 @@
 <?
 
+# Copyright Robert Pahle, EMO-IT GmbH
 session_start();
 
 $shapefiles=$_SESSION["shapefiles"];

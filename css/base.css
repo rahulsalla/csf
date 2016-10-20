@@ -4,7 +4,6 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	height: 100%;
 }
 
 table.dashboardlist {
@@ -31,6 +30,60 @@ td.dashboardlist {
 	text-decoration:none;
 }
 
+.legend
+{
+	font-weight: bold;
+	color: #333;
+}
+
+.filedrag
+{
+	display: none;
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: default;
+}
+
+.filedrag.hover
+{
+	color: #f00;
+	border-color: #f00;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}
+
+.messages
+{
+	padding: 0 10px;
+	margin: 1em 0;
+	border: 1px solid #999;
+}
+
+.progress p
+{
+	display: block;
+	width: 240px;
+	padding: 2px 5px;
+	margin: 2px 0;
+	border: 1px inset #446;
+	border-radius: 5px;
+	background: #eee url("progress.png") 100% 0 repeat-y;
+}
+
+.progress p.success
+{
+	background: #0c0 none 0 0 no-repeat;
+}
+
+.progress p.failed
+{
+	background: #c00 none 0 0 no-repeat;
+}
 
 #text001 /*White body text - align right*/
 {
@@ -173,6 +226,125 @@ td.dashboardlist {
 	text-align:left; 
 }
 
+#text017 /*GIANT White arial text*/
+{
+	color:#000000;
+	font-family: "Verdana";
+	font-size:25px;
+	width:100px;
+	text-align:right; 
+}
+
+#text018 /*Gold header*/
+{
+	color:#FFFFFF;
+	font-family: "Verdana";
+	font-size:34px;
+	width:100px;
+	text-align:right;
+}
+
+#text100 /*Black header*/
+{
+	color:#000000;
+	font-family: "Verdana";
+	font-size:28px;
+	width:450px;
+	text-align:left;
+}
+
+#text101 /*Black header*/
+{
+	color:#000000;
+	font-family: "Verdana";
+	font-size:22px;
+	width:450px;
+	text-align:left;
+}
+
+#text102 /*Dark Blue text*/
+{
+	color:#3a74a6;
+	font-family: "Verdana";
+	font-size:22px;
+	width:100px;
+	text-align:left;
+}
+
+#text103 /*Small Black text*/
+{
+	color:#000000;
+	font-family: "Verdana";
+	font-size:14px;
+	width:160px;
+	text-align:left;
+}
+
+#text104 /*Omnes text*/
+{
+        color:#000033;
+        font-family: "Omnes";
+        font-size:44px;
+        width:160px;
+        text-align:left;
+}
+
+#text105 /*Verlag text*/
+{
+        color:#0066FF;
+        font-family: "Verlag";
+        font-size:44px;
+        width:400px;
+        text-align:left;
+}
+
+#text106 /*Verlag text diff color*/
+{
+        color:#3a74a6;
+        font-family: "Verlag";
+        font-size:44px;
+        width:400px;
+        text-align:left;
+}
+
+
+#text107 /*Omnes text picked color*/
+{
+        color:#3a74a6;
+        font-family: "Omnes";
+        font-size:69px;
+	font-width:20px;
+	font-stretch:'ultra expanded';
+        width:340px;
+        text-align:left;
+}
+
+#text108 /*Omnes text picked color*/
+{
+        color:black;
+        font-family: "Omnes";
+        font-size:30px;
+        width:340px;
+        text-align:left;
+}
+
+#text109 /*Carrios Gothic text diff color*/
+{
+        color:black;
+        font-family: "Omnes";
+        font-size:25px;
+        width:400px;
+        text-align:left;
+}
+
+#text110 /*Tahoma text diff color*/
+{
+        
+        border-style: double;
+        color:blue;
+        border-width:10px;
+}
+
 #viz001
 {
 	color:#70A68C;
@@ -287,8 +459,41 @@ td.dashboardlist {
 	text-align:left; 
 }
 
+#text123 /* Omnes black size 20 620px wide */
+{
+	color:black;
+	font-family:"Omnes";
+	font-size:20px;
+	font-weight:bold;
+	width:620;
+	text-align:left;
+}
+
+#text124 /* Omnes color blue size 40 width 200px */
+{
+	color:#3a74a6;
+	font-family: "Omnes";
+	font-size:40px;
+	font-weight:bold; 
+	width:200;
+	text-align:left; 
+}
+
 #table001
 {
 	  border: 3px solid deeppink;
 
 }
+
+@font-face
+{
+	font-family: fontA;
+	src: url(/projects/acute/files/media/fontA.otf);
+}
+
+@font-face
+{
+        font-family: fontB;
+        src: url(/projects/acute/files/media/fontB.otf);
+}
+

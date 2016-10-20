@@ -11,7 +11,7 @@ require_once("types/dropdown.php");
 require_once("types/dropdowntable.php");
 require_once("viz/dynamic.php");
 
-$ajax = new PHPLiveX(array("validate_integer","validate_float","validate_checkbox","validate_dropdown","validate_dropdowntable","check_change_php","place_input", "place_viz","write_coordinates"));
+$ajax = new PHPLiveX(array("validate_integer","validate_float","validate_checkbox","validate_dropdown","validate_dropdowntable","place_input", "place_viz","write_coordinates"));
 $ajax->Run(true,'../'.$configuration['phplivex_path'].'/phplivex.js'); 
 
 function start_dashboard()

@@ -3,24 +3,24 @@
 
 -- basic trigger function
 CREATE OR REPLACE FUNCTION inter_process_update()
-  RETURNS trigger AS
+RETURNS trigger AS
 $BODY$
 DECLARE
- myrec record;
- n  text;
+myrec record;
+n  text;
 BEGIN
-	IF(TG_OP = 'UPDATE') THEN
-	  select NEW.* into myrec;
-	  n := 'insert into ' || quote_ident(TG_table_schema) || '.inter_process ("svid", "name", "type", "value", "sid", "description", "show", "order", "timestamp", "function") select ' || quote_literal(myrec.svid) ||', ' || quote_literal(myrec.name) ||', ' || quote_literal(myrec.type) ||', ' || quote_literal(myrec.value) ||', ' || quote_literal(myrec.sid) ||', ' || quote_literal(myrec.description) ||', ' || quote_literal(myrec.show) ||', ' || quote_literal(myrec.order) ||', now(), ' || quote_literal('update');
-	  execute n;
-	  return NEW;
-	END IF;
+  IF(TG_OP = 'UPDATE') THEN
+    select NEW.* into myrec;
+    n := 'insert into ' || quote_ident(TG_table_schema) || '.inter_process ("svid", "name", "type", "value", "sid", "description", "show", "order", "timestamp", "function") select ' || quote_literal(myrec.svid) ||', ' || quote_literal(myrec.name) ||', ' || quote_literal(myrec.type) ||', ' || quote_literal(myrec.value) ||', ' || quote_literal(myrec.sid) ||', ' || quote_literal(myrec.description) ||', ' || quote_literal(myrec.show) ||', ' || quote_literal(myrec.order) ||', now(), ' || quote_literal('update');
+    execute n;
+    return NEW;
+  END IF;
 
-	RETURN NULL;
+  RETURN NULL;
 END
 $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
+LANGUAGE plpgsql VOLATILE
+COST 100;
 
 -- this is the table holding single variables
 CREATE TABLE result_simple_variables
@@ -104,51 +104,84 @@ CREATE TABLE station_variables
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE station_variables OWNER TO rob;
 
 -- this trigger allows the "magic" syncronization 
 CREATE TRIGGER public_inter_process_trigger
-  AFTER INSERT OR UPDATE OR DELETE
-  ON station_variables
-  FOR EACH ROW
+AFTER INSERT OR UPDATE OR DELETE
+ON station_variables
+FOR EACH ROW
   EXECUTE PROCEDURE inter_process_update();
 
--- template for the main info
+  -- template for the main info
 
-CREATE TABLE station_variables_template
-(
-  svtid serial NOT NULL,
-  "name" text,
-  "type" text,
-  "value" text,
-  stid bigint,
-  description text,
-  "show" integer,
-  "order" integer,
-  options text,
-  CONSTRAINT public_station_variables_template_pkey PRIMARY KEY (svtid)
-)
-WITH (
-  OIDS=FALSE
-);
+  CREATE TABLE station_variables_template
+  (
+    svtid serial NOT NULL,
+    "name" text,
+    "type" text,
+    "value" text,
+    stid bigint,
+    description text,
+    "show" integer,
+    "order" integer,
+    options text,
+    CONSTRAINT public_station_variables_template_pkey PRIMARY KEY (svtid)
+  )
+  WITH (
+    OIDS=FALSE
+  );
 
-INSERT INTO station_variables_template VALUES (26, 'type', 'text', 'text', 5, 'Visualization Type', 1, 7, NULL);
-INSERT INTO station_variables_template VALUES (23, 'options', 'text', NULL, 5, 'Options', 1, 5, NULL);
-INSERT INTO station_variables_template VALUES (30, 'value', 'text', NULL, 5, 'Value', 1, 2, NULL);
-INSERT INTO station_variables_template VALUES (31, 'options', 'text', NULL, 1, 'Options', 1, 6, NULL);
-INSERT INTO station_variables_template VALUES (17, 'moduletype', 'text', 'module', 1, 'Type', -1, 5, NULL);
-INSERT INTO station_variables_template VALUES (18, 'moduletype', 'text', 'input', 4, 'Type', -1, 11, NULL);
-INSERT INTO station_variables_template VALUES (19, 'moduletype', 'text', 'viz', 5, 'Type', -1, 0, NULL);
-INSERT INTO station_variables_template VALUES (20, 'name', 'text', 'Visualization', 5, 'Name', 1, 1, NULL);
-INSERT INTO station_variables_template VALUES (21, 'x', 'integer', '0', 5, 'X-Coordinate', 0, 0, NULL);
-INSERT INTO station_variables_template VALUES (22, 'y', 'integer', '0', 5, 'Y-Coordinate', 0, 0, NULL);
-INSERT INTO station_variables_template VALUES (1, 'name', 'text', 'Module', 1, 'Name', 1, 1, NULL);
-INSERT INTO station_variables_template VALUES (5, 'name', 'text', 'Input', 4, 'Name', 1, 1, NULL);
-INSERT INTO station_variables_template VALUES (8, 'y', 'integer', '0', 4, 'Y-Coordinate', 0, 3, NULL);
-INSERT INTO station_variables_template VALUES (7, 'x', 'integer', '0', 4, 'X-Coordinate', 0, 2, NULL);
-INSERT INTO station_variables_template VALUES (4, 'y', 'integer', '0', 1, 'Y-Coordinate', 0, 3, NULL);
-INSERT INTO station_variables_template VALUES (3, 'x', 'integer', '0', 1, 'X-Coordinate', 0, 2, NULL);
-INSERT INTO station_variables_template VALUES (9, 'value', 'text', NULL, 4, 'Value', 1, 4, NULL);
-INSERT INTO station_variables_template VALUES (14, 'options', 'text', NULL, 4, 'Options', 1, 9, NULL);
-INSERT INTO station_variables_template VALUES (13, 'type', 'text', 'integer', 4, 'Input Type', 1, 8, NULL);
-INSERT INTO station_variables_template VALUES (16, 'phpfile', 'text', NULL, 1, 'Processing Type', 1, 4, NULL);
+  INSERT INTO station_variables_template VALUES (26, 'type', 'text', 'text', 5, 'Visualization Type', 1, 7, NULL);
+  INSERT INTO station_variables_template VALUES (23, 'options', 'text', NULL, 5, 'Options', 1, 5, NULL);
+  INSERT INTO station_variables_template VALUES (30, 'value', 'text', NULL, 5, 'Value', 1, 2, NULL);
+  INSERT INTO station_variables_template VALUES (31, 'options', 'text', NULL, 1, 'Options', 1, 6, NULL);
+  INSERT INTO station_variables_template VALUES (17, 'moduletype', 'text', 'module', 1, 'Type', -1, 5, NULL);
+  INSERT INTO station_variables_template VALUES (18, 'moduletype', 'text', 'input', 4, 'Type', -1, 11, NULL);
+  INSERT INTO station_variables_template VALUES (19, 'moduletype', 'text', 'viz', 5, 'Type', -1, 0, NULL);
+  INSERT INTO station_variables_template VALUES (20, 'name', 'text', 'Visualization', 5, 'Name', 1, 1, NULL);
+  INSERT INTO station_variables_template VALUES (21, 'x', 'integer', '0', 5, 'X-Coordinate', 0, 0, NULL);
+  INSERT INTO station_variables_template VALUES (22, 'y', 'integer', '0', 5, 'Y-Coordinate', 0, 0, NULL);
+  INSERT INTO station_variables_template VALUES (1, 'name', 'text', 'Module', 1, 'Name', 1, 1, NULL);
+  INSERT INTO station_variables_template VALUES (5, 'name', 'text', 'Input', 4, 'Name', 1, 1, NULL);
+  INSERT INTO station_variables_template VALUES (8, 'y', 'integer', '0', 4, 'Y-Coordinate', 0, 3, NULL);
+  INSERT INTO station_variables_template VALUES (7, 'x', 'integer', '0', 4, 'X-Coordinate', 0, 2, NULL);
+  INSERT INTO station_variables_template VALUES (4, 'y', 'integer', '0', 1, 'Y-Coordinate', 0, 3, NULL);
+  INSERT INTO station_variables_template VALUES (3, 'x', 'integer', '0', 1, 'X-Coordinate', 0, 2, NULL);
+  INSERT INTO station_variables_template VALUES (9, 'value', 'text', NULL, 4, 'Value', 1, 4, NULL);
+  INSERT INTO station_variables_template VALUES (14, 'options', 'text', NULL, 4, 'Options', 1, 9, NULL);
+  INSERT INTO station_variables_template VALUES (13, 'type', 'text', 'integer', 4, 'Input Type', 1, 8, NULL);
+  INSERT INTO station_variables_template VALUES (16, 'phpfile', 'text', NULL, 1, 'Processing Type', 1, 4, NULL);
+
+  -- table for the remote control
+  CREATE TABLE clients (
+    gid serial,
+    dashboard character varying(10),
+    id text,
+    uid text,
+    "timestamp" timestamp without time zone,
+    login text
+  );
+
+  -- table for user control
+  CREATE TABLE users
+  (
+    id serial NOT NULL,
+    username text,
+    pw text,
+    network text,
+    region text,
+    note text,
+    CONSTRAINT users_pkey PRIMARY KEY (id )
+  );
+
+  INSERT INTO users VALUES (1, 'admin', md5('password'), '0.0.0.0/0', 'dependencies,admin,import,edit,dashboard_list,dashboards=1-2000,users,', 'default user');
+
+  -- table for log information
+  CREATE TABLE log (
+    gid serial,
+    "time" timestamp with time zone,
+    "user" character(50),
+    ip character(15),
+    region character(50),
+    message text
+  );

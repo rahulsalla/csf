@@ -11,7 +11,6 @@
 <body>
 	<div class="title">CSV Upload </div>
 	<form id="form1" action="upload.php" method="post" enctype="multipart/form-data">
-	    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
 	    <input name="userfile" type="file" />
 	    <input type="submit" value="Send">
 	</form>

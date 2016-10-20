@@ -1,10 +1,11 @@
 <?php
 
+# Copyright Robert Pahle, EMO-IT GmbH
 session_start();
 $pgconfig=true;
 require_once("../../includes/config.php"); 
 $shapefiles=$_SESSION["shapefiles"];
-$tmp_dir = $configuration ['tmp_path'];
+$tmp_dir = $configuration ['tmp_path_distributed'];
 ?>
 <html>
     <body>

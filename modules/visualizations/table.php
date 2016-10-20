@@ -1,7 +1,7 @@
 <?
 function getsetup_viz_Table()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a> based on the Google Chart API.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Jaycen Horton.';
 	$options['_MODULEDESCRIPTION']		= 'Each column must be of the same data type, and all standard visualization data types are supported (string, boolean, number, etc).
 	
 	For more detailed information, please, refer to <a href="https://developers.google.com/chart/interactive/docs/gallery/table">Google Visualizations Table</a>';
@@ -79,24 +79,24 @@ function getsetup_viz_Table()
 	$options[60]['dependenton']			= '';	
 	
 	$options[70]['name']				= 'tablename';
-	$options[70]['description']		= 'From this table';
+	$options[70]['description']			= 'From this table';
 	$options[70]['detail']				= 'This is the table name';
-	$options[70]['type']				= 'Text';
+	$options[70]['type']				= 'Table';
 	$options[70]['link']				= 'link to further information..?';
 	$options[70]['lookup']				= ''; 
-	$options[70]['default']			= '';
+	$options[70]['default']				= '';
 	$options[70]['optional']			= 'no';
 	$options[70]['repeatable']			= 'no';
 	$options[70]['perdashboard']		= 'no';
-	$options[70]['dependenton']		= '';
+	$options[70]['dependenton']			= '';
 	
 	$options[80]['name']				= 'showRowNumber';
-	$options[80]['description']		= 'Shows the row number as the first column of the table';
+	$options[80]['description']			= 'Shows the row number as the first column of the table';
 	$options[80]['detail']				= 'Select true if you want to see the row numbers as the first column. Default: true';
 	$options[80]['type']				= 'Dropdown';
 	$options[80]['link']				= 'link to further information..?';
 	$options[80]['lookup']				= '|true|false'; 
-	$options[80]['default']			= 'true';
+	$options[80]['default']				= 'true';
 	$options[80]['optional']			= 'no';
 	$options[80]['repeatable']			= 'no';
 	$options[80]['perdashboard']		= 'no';
@@ -161,6 +161,56 @@ function getsetup_viz_Table()
 	$options[130]['repeatable']			= 'no';
 	$options[130]['perdashboard']		= 'no';
 	$options[130]['dependenton']		= '';
+	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
+
+        $options[365]['name']                            = 'idcolumnname';
+        $options[365]['description']                     = 'From this id-column';
+        $options[365]['detail']                          = 'This is the id-column name';
+        $options[365]['type']                            = 'Text';
+        $options[365]['link']                            = 'link to further information..?';
+        $options[365]['lookup']                          = '';
+        $options[365]['default']                         = '';
+        $options[365]['optional']                        = 'no';
+        $options[365]['repeatable']                      = 'no';
+        $options[365]['perdashboard']                    = 'no';
+        $options[365]['dependenton']                     = '';
+
+        $options[368]['name']                            = 'lookupinputmodulesid';
+        $options[368]['description']                     = 'Lookup from this Input';
+        $options[368]['detail']                          = 'This is the lookupinputmodulename';
+        $options[368]['type']                            = 'InputModule';
+        $options[368]['link']                            = 'link to further information..?';
+        $options[368]['lookup']                          = '';
+        $options[368]['default']                         = '';
+        $options[368]['optional']                        = 'no';
+        $options[368]['repeatable']                      = 'no';
+        $options[368]['perdashboard']                    = 'no';
+        $options[368]['dependenton']                     = '';
+
+
 
 	return($options);
 }
@@ -169,9 +219,15 @@ function place_viz_Table($sid, $value, $options, $setup)
 {
 	$dashboard_options = $options['dashboard_options'];
 	
-	echo '<div id="cover'.$sid.'">';
-	echo '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:'.($dashboard_options['width']).'; height:'.($dashboard_options['height']).';">';
-	echo '</div>';
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
+	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= '<div id="velement'.$sid.'" style="position:absolute;z-index:1; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']).'px; height:'.($dashboard_options['height']).'px;">';
+	$str.= '</div>';
+	$str.= '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:2; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str.= '</div>';
+	$str.= '</div>';
 	
 	
 	if(isset($options['tablename']))
@@ -200,17 +256,18 @@ function place_viz_Table($sid, $value, $options, $setup)
 		
         }
 
-	echo $content;
-	//#echo '</div>';
+	$str.= $content;
+	//#$str.= '</div>';
 	
 	$content = '	<script language="JavaScript" type="text/javascript">
+				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function reload'.$sid.'(dashboard, response)
 				{
 					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("velement'.$sid.'").style.border=\'2px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
 				}
 				function reload_update'.$sid.'(response)
 				{
@@ -226,11 +283,12 @@ function place_viz_Table($sid, $value, $options, $setup)
 					$content .= 'allowHtml:'.($options['allowHtml']).',';
 					$content .= 'sort:\''.($options['sort']).'\'});';
 
-	$content .=			'document.getElementById("velement'.$sid.'").style.border=\'0px none\';
-
+	$content .=			'document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
+						//document.getElementById("velement'.$sid.'").style.border=\'0px none\';
 				}
 			</script>';
-	echo $content;
+	$str.= $content;
+	return($str);
 }
 
 
@@ -264,9 +322,9 @@ function reload_viz_Table($sid, $value, $options, $setup)
 	for($i=0; $i<count($name_type1);$i++)
 		if($i==0) $sql .= ' "'.$name_type1[$i][0].'"';
 		else $sql .= ' ,"'.$name_type1[$i][0].'"';
-	$sql .= ' from "'.$options['tablename'].'"';
+	$sql .= ' from "'.$options['tablename'].'" where "'.$options['idcolumnname'].'"::text=(select value from station_variables where ("name"=\'value\') and ("sid"=\''.$options['lookupinputmodulesid'].'\'))::text';
 	$result	= $db->fetchAll($sql);
-	
+
 	#create string with data embedded into the html page
 	
 	$content = '

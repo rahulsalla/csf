@@ -1,7 +1,7 @@
 <?
 function getsetup_viz_text()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a>.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle.';
 	$options['_MODULEDESCRIPTION']		= 'Any column format is accepted. You will have to specify the value of the column.';
 	
 	$options[10]['name']				= 'x';
@@ -34,7 +34,7 @@ function getsetup_viz_text()
 	$options[30]['type']				= 'Text';
 	$options[30]['link']				= 'link to further information..?';
 	$options[30]['lookup']				= ''; 
-	$options[30]['default']				= '001';
+	$options[30]['default']				= 'not used';
 	$options[30]['optional']			= 'no';
 	$options[30]['repeatable']			= 'no';
 	$options[30]['perdashboard']		= 'yes';
@@ -55,7 +55,7 @@ function getsetup_viz_text()
 	$options[55]['name']				= 'tablename';
 	$options[55]['description']			= 'From this table';
 	$options[55]['detail']				= 'This is the table name';
-	$options[55]['type']				= 'Text';
+	$options[55]['type']				= 'Table';
 	$options[55]['link']				= 'link to further information..?';
 	$options[55]['lookup']				= ''; 
 	$options[55]['default']				= '';
@@ -87,31 +87,89 @@ function getsetup_viz_text()
 	$options[70]['repeatable']			= 'no';
 	$options[70]['perdashboard']		= 'no';
 	$options[70]['dependenton']			= '';	
-	
-	$options[80]['name']				= 'test';
-	$options[80]['description']			= 'test';
-	$options[80]['detail']				= 'This is the id that you are looking for';
-	$options[80]['type']				= 'Text';
-	$options[80]['link']				= 'link to further information..?';
-	$options[80]['lookup']				= ''; 
-	$options[80]['default']				= '';
-	$options[80]['optional']			= 'no';
-	$options[80]['repeatable']			= 'no';
-	$options[80]['perdashboard']		= 'yes';
-	$options[80]['dependenton']			= '';		
-	
-	
+
+	$options[71]['name']				= 'lookupinputmodulesid';
+	$options[71]['description']			= 'Lookup from this Input';
+	$options[71]['detail']				= 'This is the lookupinputmodulename';
+	$options[71]['type']				= 'InputModule';
+	$options[71]['link']				= 'link to further information..?';
+	$options[71]['lookup']				= ''; 
+	$options[71]['default']				= '';
+	$options[71]['optional']			= 'no';
+	$options[71]['repeatable']			= 'no';
+	$options[71]['perdashboard']			= 'no';
+	$options[71]['dependenton']			= '';
+
+	$options[73]['name']				= 'lookupidcolumnname';
+	$options[73]['description']			= 'From this lookup-id-column';
+	$options[73]['detail']				= 'This is the lookup-id-column name';
+	$options[73]['type']				= 'Text';
+	$options[73]['link']				= 'link to further information..?';
+	$options[73]['lookup']				= ''; 
+	$options[73]['default']				= '';
+	$options[73]['optional']			= 'no';
+	$options[73]['repeatable']			= 'no';
+	$options[73]['perdashboard']			= 'no';
+	$options[73]['dependenton']			= '';
+
+	$options[75]['name']				= 'lookuptablename';
+	$options[75]['description']			= 'From this lookup-table';
+	$options[75]['detail']				= 'This is the lookup-table name';
+	$options[75]['type']				= 'Table';
+	$options[75]['link']				= 'link to further information..?';
+	$options[75]['lookup']				= ''; 
+	$options[75]['default']				= '';
+	$options[75]['optional']			= 'no';
+	$options[75]['repeatable']			= 'no';
+	$options[75]['perdashboard']			= 'no';
+	$options[75]['dependenton']			= '';
+
+	$options[85]['name']				= 'lookupcolumnname';
+	$options[85]['description']			= 'From this lookup-column';
+	$options[85]['detail']				= 'This is the lookup-column name';
+	$options[85]['type']				= 'Text';
+	$options[85]['link']				= 'link to further information..?';
+	$options[85]['lookup']				= ''; 
+	$options[85]['default']				= '';
+	$options[85]['optional']			= 'no';
+	$options[85]['repeatable']			= 'no';
+	$options[85]['perdashboard']			= 'no';
+	$options[85]['dependenton']			= '';
+
+	$options[90]['name']				= 'cssstyle';
+	$options[90]['description']			= 'Direct CSS style';
+	$options[90]['detail']				= 'Enter a direct CSS style tag, to modify the text properties';
+	$options[90]['type']				= 'Text';
+	$options[90]['link']				= 'link to further information..?';
+	$options[90]['lookup']				= ''; 
+	$options[90]['default']				= 'color:black;font-size:32px;font-family:Arial, Helvetica, sans-serif;';
+	$options[90]['optional']			= 'no';
+	$options[90]['repeatable']			= 'no';
+	$options[90]['perdashboard']			= 'yes';
+	$options[90]['dependenton']			= '';
+
+	$options[100]['name']				= 'zindex';
+	$options[100]['description']			= 'Z-Index';
+	$options[100]['detail']				= 'Enter a number representing the order of elements on the dashboard';
+	$options[100]['type']				= 'Integer';
+	$options[100]['link']				= 'link to further information..?';
+	$options[100]['lookup']				= ''; 
+	$options[100]['default']			= '100';
+	$options[100]['optional']			= 'no';
+	$options[100]['repeatable']			= 'no';
+	$options[100]['perdashboard']			= 'yes';
+	$options[100]['dependenton']			= '';
 
 	return($options);
 }
 
 function place_viz_text($sid, $value, $options, $setup)
-{
-	echo '<div id="cover'.$sid.'">';
-	echo reload_viz_text($sid, $value, $options, $setup);
-	echo '</div>';
+{	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= reload_viz_text($sid, $value, $options, $setup);
+	$str.= '</div>';
 	
-	echo '	<script language="JavaScript" type="text/javascript">
+	$str.= '	<script language="JavaScript" type="text/javascript">
 				function reload'.$sid.'(dashboard, response)
 				{
 					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
@@ -125,6 +183,7 @@ function place_viz_text($sid, $value, $options, $setup)
 					document.getElementById("cover'.$sid.'").innerHTML = response;
 				}
 			</script>';
+		return($str);
 }
 
 function reload_viz_text($sid, $value, $options, $setup)
@@ -133,10 +192,17 @@ function reload_viz_text($sid, $value, $options, $setup)
 	global $db;
 	$dashboard_options = $options['dashboard_options'];
 #	echo "test";
-	$content = '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:480px; height: 20px;"><div id="text'.$dashboard_options['css'].'" style="margin:0px; padding:0px;"><p id="elementm'.$sid.'" style="margin:0px; padding:0px;">';
+	if(!isset($dashboard_options['zindex'])) $dashboard_options['zindex']=100;
+	$content = '<div id="velement'.$sid.'" style="z-index:'.$dashboard_options['zindex'].';position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).';"><div id="text'.$dashboard_options['css'].'" style="'.$dashboard_options['cssstyle'].'"><p id="elementm'.$sid.'" style="margin:0px; padding:0px;">';
 	if(isset($options['tablename']) and ($options['tablename']!=''))
 	{
-		$sql = "select ".$options['valuefield']." as value from ".$options['tablename']." where \"".$options['queryfield']."\" = '".$options['idnumber']."'";
+		$sql = "select \"".$options['valuefield']."\" as value from ".$options['tablename']." where \"".$options['queryfield']."\" = '".$options['idnumber']."'";
+		if(isset($options['lookuptablename']) and ($options['lookuptablename']!='')) 
+		    $sql= "select \"".$options['valuefield']."\" as value from ".$options['tablename']." where \"".$options['queryfield'].'"::text =(select '.$options['lookupcolumnname'].' from '.$options['lookuptablename']." where ".$options['lookupsearchcolumnname']."=".$options['lookupsearchvalue'].')::text;';
+		if(isset($options['lookupinputmodulesid']) and ($options['lookupinputmodulesid']!=''))
+		    $sql="select \"".$options['valuefield']."\" as value from ".$options['tablename']." where \"".$options['queryfield']."\"::text =(select value from station_variables where (name='value') and (sid=".$options['lookupinputmodulesid']."))::text;";
+
+
 		$result	= $db->fetchAll($sql);
 		$content .= str_replace('#',$result[0]['value'],$value);
 	}

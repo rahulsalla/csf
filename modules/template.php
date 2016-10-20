@@ -3,7 +3,7 @@ if(isset($dashboard_setup)) {
     function getsetup_module_test() {
 
 /* example options:
-	$options['_CREDITS']				= 'Please place your credits here. For more information go to <a href="http://dt.asu.edu">Decision Theater</a> homepage';
+	$options['_CREDITS']				= 'Please place your credits here.';
 
 	$options['_MODULEDESCRIPTION']			= 'This a template module. Please place a detailed description here';
 

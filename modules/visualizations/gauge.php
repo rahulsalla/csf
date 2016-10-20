@@ -1,7 +1,7 @@
 <?
 function getsetup_viz_Gauge()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a> based on the Google Chart API.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Rahul Salla, Jaycen Horton, Erzhena Soktoeva.';
 	$options['_MODULEDESCRIPTION']		= 'Each numeric value is displayed as a gauge. Two alternative data formats are supported:
 	<ol>
 	<li>Table Format 1:</li>
@@ -78,7 +78,7 @@ function getsetup_viz_Gauge()
 	$options[70]['name']				= 'tablename';
 	$options[70]['description']			= 'From this table';
 	$options[70]['detail']				= 'choose the table you want to graph. refer to the module description for table format';
-	$options[70]['type']				= 'Text';
+	$options[70]['type']				= 'Table';
 	$options[70]['link']				= 'link to further information..?';
 	$options[70]['lookup']				= ''; 
 	$options[70]['default']			    = '';
@@ -93,7 +93,7 @@ function getsetup_viz_Gauge()
 	$options[80]['type']				= 'Integer';
 	$options[80]['link']				= 'link to further information..?';
 	$options[80]['lookup']				= ''; 
-	$options[80]['default']				= '';
+	$options[80]['default']				= '0';
 	$options[80]['optional']			= 'no';
 	$options[80]['repeatable']			= 'no';
 	$options[80]['perdashboard']		= 'yes';
@@ -105,7 +105,7 @@ function getsetup_viz_Gauge()
 	$options[85]['type']				= 'Integer';
 	$options[85]['link']				= 'link to further information..?';
 	$options[85]['lookup']				= ''; 
-	$options[85]['default']				= '';
+	$options[85]['default']				= '4';
 	$options[85]['optional']			= 'no';
 	$options[85]['repeatable']			= 'no';
 	$options[85]['perdashboard']		= 'yes';
@@ -117,7 +117,7 @@ function getsetup_viz_Gauge()
 	$options[90]['type']				= 'Integer';
 	$options[90]['link']				= 'link to further information..?';
 	$options[90]['lookup']				= ''; 
-	$options[90]['default']				= '';
+	$options[90]['default']				= '5';
 	$options[90]['optional']			= 'no';
 	$options[90]['repeatable']			= 'no';
 	$options[90]['perdashboard']		= 'yes';
@@ -129,7 +129,7 @@ function getsetup_viz_Gauge()
 	$options[95]['type']				= 'Integer';
 	$options[95]['link']				= 'link to further information..?';
 	$options[95]['lookup']				= ''; 
-	$options[95]['default']				= '';
+	$options[95]['default']				= '10';
 	$options[95]['optional']			= 'no';
 	$options[95]['repeatable']			= 'no';
 	$options[95]['perdashboard']		= 'yes';
@@ -141,7 +141,7 @@ function getsetup_viz_Gauge()
 	$options[100]['type']				= 'Integer';
 	$options[100]['link']				= 'link to further information..?';
 	$options[100]['lookup']				= ''; 
-	$options[100]['default']			= '';
+	$options[100]['default']			= '11';
 	$options[100]['optional']			= 'no';
 	$options[100]['repeatable']			= 'no';
 	$options[100]['perdashboard']		= 'yes';
@@ -153,11 +153,59 @@ function getsetup_viz_Gauge()
 	$options[105]['type']				= 'Integer';
 	$options[105]['link']				= 'link to further information..?';
 	$options[105]['lookup']				= ''; 
-	$options[105]['default']			= '';
+	$options[105]['default']			= '100';
 	$options[105]['optional']			= 'no';
 	$options[105]['repeatable']			= 'no';
 	$options[105]['perdashboard']		= 'yes';
 	$options[105]['dependenton']		= '';	
+	
+	$options[110]['name']				= 'min';
+	$options[110]['description']		= 'Enter the number that will serve as the lowest value';
+	$options[110]['detail']				= 'The lowest value for the overall range';
+	$options[110]['type']				= 'Integer';
+	$options[110]['link']				= 'link to further information..?';
+	$options[110]['lookup']				= ''; 
+	$options[110]['default']			= '0';
+	$options[110]['optional']			= 'no';
+	$options[110]['repeatable']			= 'no';
+	$options[110]['perdashboard']		= 'yes';
+	$options[110]['dependenton']		= '';
+
+	$options[120]['name']				= 'max';
+	$options[120]['description']		= 'Enter the number that will serve as the highest value';
+	$options[120]['detail']				= 'The highest value for the overall range';
+	$options[120]['type']				= 'Integer';
+	$options[120]['link']				= 'link to further information..?';
+	$options[120]['lookup']				= ''; 
+	$options[120]['default']			= '1000000';
+	$options[120]['optional']			= 'no';
+	$options[120]['repeatable']			= 'no';
+	$options[120]['perdashboard']		= 'yes';
+	$options[120]['dependenton']		= '';
+	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
 	
 	return($options);
 }
@@ -166,9 +214,15 @@ function place_viz_Gauge($sid, $value, $options, $setup)
 {
 	$dashboard_options = $options['dashboard_options'];
 	
-	echo '<div id="cover'.$sid.'">';
-	echo '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:'.($dashboard_options['width']).'; height:'.($dashboard_options['height']).';">';
-	echo '</div>';
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
+	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= '<div id="velement'.$sid.'" style="position:absolute;z-index:1; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']).'px; height:'.($dashboard_options['height']).'px;">';
+	$str.= '</div>';
+	$str.= '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:2; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str.= '</div>';
+	$str.= '</div>';
 	
 	$content = '';
 	if(isset($options['tablename']))
@@ -182,10 +236,12 @@ function place_viz_Gauge($sid, $value, $options, $setup)
 			function drawChart'.$sid.'()
 			{';
 				$content .= reload_viz_Gauge($sid, $value, $options, $setup);
-				$content .= 'gauge'.$sid.' = new google.visualization.Gauge(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {width:\''.($dashboard_options['width']).'\', height:\''.($dashboard_options['height']);
+				$content .= ' gauge'.$sid.' = new google.visualization.Gauge(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {width:\''.($dashboard_options['width']).'\', height:\''.($dashboard_options['height']);
 				$content .= '\',redFrom:\''.($dashboard_options['redFrom']).'\',redTo:\''.($dashboard_options['redTo']);
 				$content .= '\',yellowFrom:\''.($dashboard_options['yellowFrom']).'\',yellowTo:\''.($dashboard_options['yellowTo']);
-				$content .= '\',greenFrom:\''.($dashboard_options['greenFrom']).'\',greenTo:\''.($dashboard_options['greenTo']).'\',minorTicks:\''.($dashboard_options['minorTicks']).'\'});
+				$content .= '\',greenFrom:\''.($dashboard_options['greenFrom']).'\',greenTo:\''.($dashboard_options['greenTo']);
+				$content .= '\',min:\''.($dashboard_options['min']).'\',max:\''.($dashboard_options['max']);
+                $content .= '\',minorTicks:\''.($dashboard_options['minorTicks']).'\'});
 			}
 		</script>';
 		
@@ -193,31 +249,36 @@ function place_viz_Gauge($sid, $value, $options, $setup)
 
     }
 
-	echo $content;
-	echo '</div>';
-	
-	echo '	<script language="JavaScript" type="text/javascript">
+	$str.= $content;
+	$str.= '</div>';
+	$content ='';
+	$str.= '	<script language="JavaScript" type="text/javascript">
+				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function reload'.$sid.'(dashboard, response)
 				{
 					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("velement'.$sid.'").style.border=\'2px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
 				}
 				function reload_update'.$sid.'(response)
 				{
 					eval(response);
-					gauge'.$sid.' = new google.visualization.Gauge(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {';
+					//gauge'.$sid.' = new google.visualization.Gauge(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.',';
 				$content .= reload_viz_Gauge($sid, $value, $options, $setup);
-				$content .= 'gauge'.$sid.' = new google.visualization.Gauge(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {width:\''.($dashboard_options['width']).'\', height:\''.($dashboard_options['height']);
+				$content .= ' gauge'.$sid.' = new google.visualization.Gauge(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {width:\''.($dashboard_options['width']).'\', height:\''.($dashboard_options['height']);
 				$content .= '\',redFrom:\''.($dashboard_options['redFrom']).'\',redTo:\''.($dashboard_options['redTo']);
 				$content .= '\',yellowFrom:\''.($dashboard_options['yellowFrom']).'\',yellowTo:\''.($dashboard_options['yellowTo']);
-				$content .= '\',greenFrom:\''.($dashboard_options['greenFrom']).'\',greenTo:\''.($dashboard_options['greenTo']).'\',minorTicks:\''.($dashboard_options['minorTicks']).'\'});
-			});
-					document.getElementById("velement'.$sid.'").style.border=\'0px none\';
+				$content .= '\',greenFrom:\''.($dashboard_options['greenFrom']).'\',greenTo:\''.($dashboard_options['greenTo']);
+				$content .= '\',min:\''.($dashboard_options['min']).'\',max:\''.($dashboard_options['max']);
+        		        $content .= '\',minorTicks:\''.($dashboard_options['minorTicks']).'\'});
+			//});
+					document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 				}
 			</script>';
+			$str.= $content;
+			return($str);
 }
 
 

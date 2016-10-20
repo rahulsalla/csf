@@ -2,19 +2,30 @@
 
 function getsetup_input_dropdowntable()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a>.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Jaycen Horton.';
 	$options['_MODULEDESCRIPTION']		= 'More info will follow.';
 
 	$options[0]['name']			= 'css';
-	$options[0]['description']	= 'Please select the CSS';
-	$options[0]['detail']		= 'This is the css number that influences the layout';
+	$options[0]['description']		= 'Please select the CSS';
+	$options[0]['detail']			= 'This is the css number that influences the layout';
 	$options[0]['type']			= 'Integer';
 	$options[0]['link']			= 'link to further information..?';
-	$options[0]['lookup']		= ''; 
-	$options[0]['default']		= '001';
-	$options[0]['optional']		= 'no';
-	$options[0]['perdashboard']	= 'yes';
-	$options[0]['dependenton']	= '';
+	$options[0]['lookup']			= ''; 
+	$options[0]['default']			= '';
+	$options[0]['optional']			= 'no';
+	$options[0]['perdashboard']		= 'yes';
+	$options[0]['dependenton']		= '';
+
+	$options[5]['name']			= 'style';
+	$options[5]['description']		= 'Direct CSS style';
+	$options[5]['detail']			= 'Enter direct CSS style tags to modify the select properties';
+	$options[5]['type']			= 'Text';
+	$options[5]['link']			= 'link to further information..?';
+	$options[5]['lookup']			= ''; 
+	$options[5]['default']			= '';
+	$options[5]['optional']			= 'yes';
+	$options[5]['perdashboard']		= 'yes';
+	$options[5]['dependenton']		= '';
 	
 	$options[10]['name']				= 'x';
 	$options[10]['description']			= 'Please select the x coordinate';
@@ -43,7 +54,7 @@ function getsetup_input_dropdowntable()
 	$options[45]['name']				= 'tablename';
 	$options[45]['description']			= 'From this table';
 	$options[45]['detail']				= 'This is the table name';
-	$options[45]['type']				= 'Text';
+	$options[45]['type']				= 'Table';
 	$options[45]['link']				= 'link to further information..?';
 	$options[45]['lookup']				= ''; 
 	$options[45]['default']				= '';
@@ -75,7 +86,19 @@ function getsetup_input_dropdowntable()
 	$options[65]['repeatable']			= 'no';
 	$options[65]['perdashboard']			= 'no';
 	$options[65]['dependenton']			= '';
-	
+
+	$options[68]['name']				= 'lookupinputmodulesid';
+	$options[68]['description']			= 'Lookup from this Input';
+	$options[68]['detail']				= 'This is the lookupinputmodulename';
+	$options[68]['type']				= 'InputModule';
+	$options[68]['link']				= 'link to further information..?';
+	$options[68]['lookup']				= ''; 
+	$options[68]['default']				= '';
+	$options[68]['optional']			= 'no';
+	$options[68]['repeatable']			= 'no';
+	$options[68]['perdashboard']			= 'no';
+	$options[68]['dependenton']			= '';
+
 	$options[70]['name']				= 'lookupidcolumnname';
 	$options[70]['description']			= 'From this lookup-id-column';
 	$options[70]['detail']				= 'This is the lookup-id-column name';
@@ -91,7 +114,7 @@ function getsetup_input_dropdowntable()
 	$options[75]['name']				= 'lookuptablename';
 	$options[75]['description']			= 'From this lookup-table';
 	$options[75]['detail']				= 'This is the lookup-table name';
-	$options[75]['type']				= 'Text';
+	$options[75]['type']				= 'Table';
 	$options[75]['link']				= 'link to further information..?';
 	$options[75]['lookup']				= ''; 
 	$options[75]['default']				= '';
@@ -136,6 +159,66 @@ function getsetup_input_dropdowntable()
 	$options[115]['perdashboard']			= 'no';
 	$options[115]['dependenton']			= '';
 
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'FF0000';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
+	
+	$options[310]['name']				= 'width';
+	$options[310]['description']			= 'Field width (if left blank, the field will be as wide as the text)';
+	$options[310]['detail']				= 'This sets the y coordinate to place the element on the dashboard.';
+	$options[310]['type']				= 'Integer';
+	$options[310]['link']				= 'link to further information..?';
+	$options[310]['lookup']				= ''; #this would be if i have a dropdown and want to lookup the value you would enter a sql script with the column that comes back being the selection
+	$options[310]['default']				= '100';
+	$options[310]['optional']			= 'no';
+	$options[310]['repeatable']			= 'no';
+	$options[310]['perdashboard']		= 'yes';
+	$options[310]['dependenton']			= '';
+	
+	$options[320]['name']				= 'height';
+	$options[320]['description']			= 'Field height (if left blank, the field will be as high as the text)';
+	$options[320]['detail']				= 'Default: 20';
+	$options[320]['type']				= 'Integer';
+	$options[320]['link']				= 'link to further information..?';
+	$options[320]['lookup']				= ''; 
+	$options[320]['default']				= '20';
+	$options[320]['optional']			= 'no';
+	$options[320]['repeatable']			= 'no';
+	$options[320]['perdashboard']		= 'yes';
+	$options[320]['dependenton']			= '';
+
+	$options[400]['name']				= 'zindex';
+	$options[400]['description']			= 'Z-Index';
+	$options[400]['detail']				= 'Enter a number representing the order of elements on the dashboard';
+	$options[400]['type']				= 'Integer';
+	$options[400]['link']				= 'link to further information..?';
+	$options[400]['lookup']				= ''; 
+	$options[400]['default']			= '100';
+	$options[400]['optional']			= 'no';
+	$options[400]['repeatable']			= 'no';
+	$options[400]['perdashboard']			= 'yes';
+	$options[400]['dependenton']			= '';
+
 
 	return($options);
 }
@@ -164,14 +247,21 @@ function validate_dropdowntable($id, $value)
 
 function place_input_dropdowntable($sid, $value, $options, $setup)
 {
+	$dashboard_options = $options['dashboard_options'];
+	if(!isset($dashboard_options['zindex'])) $dashboard_options['zindex']=100;
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
 
-	echo '<div id="cover'.$sid.'">';
-	echo reload_input_dropdowntable($sid, $value, $options, $setup);
-	echo '</div>';
+    $str  = '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].'px solid #'.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:'.($dashboard_options['zindex']+2).'; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str .= '</div>';
+	$str .= '<div id="cover'.$sid.'">';
+	$str .= reload_input_dropdowntable($sid, $value, $options, $setup);
+	$str .= '</div>';
 	
 	
 	
-		echo '	<script language="JavaScript" type="text/javascript">
+		$str .= '	<script language="JavaScript" type="text/javascript">
+//				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function update'.$sid.'(dashboard, response)
 				{
 					place_input(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
@@ -182,13 +272,17 @@ function place_input_dropdowntable($sid, $value, $options, $setup)
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("'.$setup['value_svid'].'").style.border=\'1px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility="visible";
 				}
 				function reload_update'.$sid.'(response)
 				{
 					document.getElementById("cover'.$sid.'").innerHTML = response;
+					document.getElementById("celement'.$sid.'").style.width=(document.getElementById("element'.$sid.'").firstElementChild.offsetWidth-('.($dashboard_options["loadingHighlightThickness"] * 2).'))+"px";
+					document.getElementById("celement'.$sid.'").style.height=(document.getElementById("element'.$sid.'").firstElementChild.offsetHeight-('.($dashboard_options["loadingHighlightThickness"] * 2).'))+"px";
+					document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 				}
 			</script>';
+	return($str);
 }
 
 function reload_input_dropdowntable($sid, $value, $options, $setup)
@@ -198,15 +292,28 @@ function reload_input_dropdowntable($sid, $value, $options, $setup)
 	//echo "<script type='text/javascript'>alert('reload')</script>";
 	global $db;
 	$content = '';
-	$dashboard_options = $options['dashboard_options'];	
+	$dashboard_options = $options['dashboard_options'];
+	if(!isset($dashboard_options['zindex'])) $dashboard_options['zindex']=100;
+	$sql='select "'.$options['columnname'].'","'.$options['idcolumnname'].'" from "'.$options['tablename'].'"';
 	if($options['lookuptablename']!='') 
-		//replicate this query in return_default_value
-		$sql='select '.$options['columnname'].','.$options['idcolumnname'].' from '.$options['tablename'].' where '.$options['lookupidcolumnname'].'::text=(select '.$options['lookupcolumnname'].' from '.$options['lookuptablename']." where ".$options['lookupsearchcolumnname']."=".$options['lookupsearchvalue'].')::text;';
-	else $sql='select '.$options['columnname'].','.$options['idcolumnname'].' from '.$options['tablename'];
-	
-	$content = '<div id="element'.$sid.'" style="z-index:10; position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:150; height:10;">
-		<select CLASS=SmallInput STYLE="text-align: left; padding-left: 5px" id="'.$setup['value_svid'].'" size="1" value="'.$value.'" onchange="validate_dropdowntable(this.id, this.value, {\'onUpdate\': function(response,xmlhttp){make_update(\''.$sid.'\',response)}});">
-	';
+		$sql='select "'.$options['columnname'].'","'.$options['idcolumnname'].'" from "'.$options['tablename'].'" where "'.$options['lookupidcolumnname'].'"::text=(select "'.$options['lookupcolumnname'].'" from "'.$options['lookuptablename']."\" where \"".$options['lookupsearchcolumnname']."\"=".$options['lookupsearchvalue'].')::text;';
+	if($options['lookupinputmodulesid']!='')
+		$sql='select "'.$options['columnname'].'","'.$options['idcolumnname'].'" from "'.$options['tablename'].'" where "'.$options['lookupidcolumnname']."\"::text=(select value from station_variables where (name='value') and (sid=".$options['lookupinputmodulesid']."))::text;";
+		$content .= '<div id="celement'.$sid.'" style="visibility:hidden; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute; z-index:'.($dashboard_options['zindex']+2).';  width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+		$content .=  '</div>';
+		
+	if ($dashboard_options['height']=='' && $dashboard_options['width']=='')
+	{
+		$content .= '<div id="element'.$sid.'" style="z-index:'.$dashboard_options['zindex'].';position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).';width:'.($dashboard_options['width']).';height:'.($dashboard_options['height']).';">
+			<select CLASS=SmallInput STYLE="text-align: left; width:'.($dashboard_options['width']).';height:'.($dashboard_options['height']).'; padding-left: 5px" id="'.$setup['value_svid'].'" size="1" value="'.$value.'" onchange="validate_dropdown(this.id, this.value, {\'onUpdate\': function(response,xmlhttp){make_update(\''.$sid.'\',response)}});">
+			';
+	}
+	else
+	{
+		$content .= '<div id="element'.$sid.'" style="z-index:'.$dashboard_options['zindex'].';position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).';width:'.($dashboard_options['width']).';height:'.($dashboard_options['height']).';">
+			<select CLASS=SmallInput STYLE="'.($dashboard_options['style']).';text-align: left; width:'.($dashboard_options['width']).';height:'.($dashboard_options['height']).'; padding-left: 5px" id="'.$setup['value_svid'].'" size="1" value="'.$value.'" onchange="validate_dropdown(this.id, this.value, {\'onUpdate\': function(response,xmlhttp){make_update(\''.$sid.'\',response);}});">
+			';
+	}
 
 	$result			= $db->fetchAll($sql);
 	$selected		= false;
@@ -226,13 +333,15 @@ function reload_input_dropdowntable($sid, $value, $options, $setup)
 	
 	if($selected==false)
 	{
-		validate_dropdowntable($setup['value_svid'], $result[0][$options['idcolumnname']]);
+		if(isset($result[0][$options['idcolumnname']]))
+		    validate_dropdowntable($setup['value_svid'], $result[0][$options['idcolumnname']]);
+		else
+		    validate_dropdowntable($setup['value_svid'], '');
 		#$columns['value']	= $result[0][$options['idcolumnname']];
 		#$db->update("station_variables",$columns,'"svid"=\''.$setup['value_svid'].'\'');
 	}
 
 		
-
 
 	return($content);
 
@@ -243,24 +352,29 @@ function reload_input_dropdowntable($sid, $value, $options, $setup)
 //The function accepts the paramter id (used to specify which module to update), and value (taken from the modules relational "value" property).
 function dropdowntable_rtrn_default_value($sid, $options)
 {
-  	//Specify the database to connect to
+	//Specify the database to connect to
 	//use to find default value
 	global $db;
 	//read database, find default value
 
-	if($options['lookuptablename']!='') {
-		$sql	='select '.$options['columnname'].','.$options['idcolumnname'].' from '.$options['tablename'].' where '.$options['lookupidcolumnname'].'::text=(select '.$options['lookupcolumnname'].' from '.$options['lookuptablename']." where ".$options['lookupsearchcolumnname']."=".$options['lookupsearchvalue'].')::text;';
-		$result	= $db->fetchAll($sql);
+	$sql	= 'select value from station_variables where sid='.$sid.' and name=\'value\';';
+	$result1 = $db->fetchAll($sql);
 
-		$sql	= 'update station_variables set value=\''.$result[0][$options['idcolumnname']].'\' where sid='.$sid.' and name=\'value\';';
-		$result	= $db->fetchAll($sql);
-	}
-	else {
-		$sql	='select '.$options['columnname'].','.$options['idcolumnname'].' from '.$options['tablename'].' limit 1';
-		$result	= $db->fetchAll($sql);
+	$sql='select "'.$options['columnname'].'","'.$options['idcolumnname'].'" from "'.$options['tablename'].'"';
+	if($options['lookuptablename']!='') 
+		$sql='select "'.$options['columnname'].'","'.$options['idcolumnname'].'" from "'.$options['tablename'].'" where "'.$options['lookupidcolumnname'].'"::text=(select "'.$options['lookupcolumnname'].'" from "'.$options['lookuptablename']."\" where \"".$options['lookupsearchcolumnname']."\"=".$options['lookupsearchvalue'].')::text;';
+	if($options['lookupinputmodulesid']!='')
+		$sql='select "'.$options['columnname'].'","'.$options['idcolumnname'].'" from "'.$options['tablename'].'" where "'.$options['lookupidcolumnname']."\"::text=(select value from station_variables where (name='value') and (sid=".$options['lookupinputmodulesid']."))::text;";
+#file_put_contents('/var/www/tmp/info','dropdowntable return default value ('.$sid.'): '.$sql."\n",FILE_APPEND);
+	$result	= $db->fetchAll($sql);
 
-		$sql	= 'update station_variables set value=\''.$result[0][$options['idcolumnname']].'\' where sid='.$sid.' and name=\'value\';';
-		$result	= $db->fetchAll($sql);
-	}
+	$selector = 0;
+	foreach($result as $key => $value)
+	    if ($value[$options['idcolumnname']]==$result1[0]['value'])
+		$selector = $key;
+
+
+	$sql	= 'update station_variables set value=\''.$result[$selector][$options['idcolumnname']].'\' where sid='.$sid.' and name=\'value\';';
+	$result	= $db->fetchAll($sql);
 }
 

@@ -1,0 +1,357 @@
+<html>
+<head>
+<style type="text/css">
+.box{width:675px;font-size:12px;font-family:verdana,arial;-x-system-font:none}.box legend{font-size:15px;font-weight:bold;margin-left:40px;color:#000}.box .content{width:100%;margin-top:5px;margin-bottom:5px}.box .content .method_ul{list-style-image:url("listicon.png")}.box .content .var_ul{list-style-image:url("listicon2.png");margin-top:10px}.box .content ul li{padding-left:5px}.box .content a{background-color:inherit;color:#036;text-decoration:none}.box .content a:hover{background-color:#D5595C}.box .type{font-style:italic;color:#D5595C;font-weight:bold;font-size:11px}.box .method{font-weight:bold}.box .var{font-weight:bold;color:#019}.box .options{color:#D5595C;font-size:11px}.box .usage{width:635px;margin-top:10px;padding-left:5px;padding-right:5px;border-bottom:1px solid #CCC}.box .usage .header{font-size:14px;margin-top:8px;margin-bottom:8px}.box .usage .header img{border:none}.box .usage .info{font-size:12px;padding-left:5px}.box .usage .example{margin-top:10px;margin-bottom:10px;text-align:center;font-style:italic;color:#036;font-size:11px}.box .usage .args{list-style-image:url("listicon2.png");list-style-position:outside}.box .usage a{background-color:inherit;color:#036;text-decoration:none}
+</style>
+</head>
+
+<body>
+
+<!-- PHP METHOD SUMMARY -->
+<fieldset class="box">
+	<legend>PHP Sınıfındaki Metot ve Değişkenler</legend>
+	
+	<div class="content">
+		<ul class="method_ul">
+			<li><span class="type">phplivex</span> <a href="#constructor" class="method">__constructor</a><span class="options"> ( [ <b>$functions</b> = array() ] )</span></li>
+			<li><span class="type">void</span> <a href="#ajaxify" class="method">Ajaxify</a><span class="options"> ( array <b>$functions</b> )</span></li>
+			<li><span class="type">void</span> <a href="#ajaxifyall" class="method">AjaxifyAll</a><span class="options"> ()</span></li>
+			<li><span class="type">void</span> <a href="#ajaxifyobjmethods" class="method">AjaxifyObjectMethods</a><span class="options"> ( array <b>$methods</b> )</span></li>
+			<li><span class="type">void</span> <a href="#ajaxifyobjects" class="method">AjaxifyObjects</a><span class="options"> ( array <b>$objects</b> )</span></li>
+			<li><span class="type">static string</span> <a href="#decode" class="method">Decode</a><span class="options"> ( string <b>$str</b>, string <b>$encoding</b> )</span></li>
+            <li><span class="type">void</span> <a href="#run" class="method">Run</a><span class="options"> ( [ bool <b>$includeJS</b> ], [ string <b>$filepath</b> ] )</span></li>
+	  </ul>
+        <ul class="var_ul">
+        	<li><span class="type">string</span> <a href="#encoding" class="method">Encoding</a><span class="options"> = "UTF-8"</span></li>
+        </ul>
+	</div>
+	
+</fieldset>
+<br><br>
+<!-- JS METHOD SUMMARY -->
+<fieldset class="box">
+	<legend>JavaScript Sınıfındaki Metot ve Değişkenler</legend>
+	
+	<div class="content">
+		<ul class="method_ul">
+			<li><span class="type">void</span> <a href="#externalreq" class="method">ExternalRequest</a> <span class="options">(object <b>options</b>)</span></li>
+		  <li><span class="type">void</span> <a href="#submitform" class="method">SubmitForm</a> <span class="options">(HTMLFormElement|id|name <b>form</b>, object <b>options</b> )</span></li>
+		</ul>
+		<ul class="var_ul">
+			<li><span class="type">object</span> <a href="#options" class="method">Options</a></li>
+				<ul class="var_ul">
+					<li><span class="type">HTMLDomElement|id</span> <a href="#target" class="method">target</a><span class="options"> = null</span></li>
+					<li><span class="type">string</span> <a href="#target_attr" class="method">target_attr</a><span class="options"> = "innerContent"</span></li>
+					<li><span class="type">string</span> <a href="#mode" class="method">mode</a><span class="options"> = "rw"</span></li>
+					<li><span class="type">HTMLDomElement|id</span> <a href="#preloader" class="method">preloader</a><span class="options"> = null</span></li>
+					<li><span class="type">string</span> <a href="#p_style" class="method">preloader_style</a><span class="options"> = "visibility"</span></li>
+					<li><span class="type">bool</span> <a href="#c_content" class="method">clear_content</a><span class="options"> = false</span></li>
+                    <li><span class="type">string</span> <a href="#c_type" class="method">content_type</a><span class="options"> = "text"</span></li>
+                    <li><span class="type">bool</span> <a href="#e_scripts" class="method">eval_scripts</a><span class="options"> = true</span></li>
+					<li><span class="type">int</span> <a href="#interval" class="method">interval</a><span class="options"> = null</span></li>
+                    <li><span class="type">object</span> <a href="#params" class="method">params</a><span class="options"> = null</span></li>
+                    <li><span class="type">object</span> <a href="#headers" class="method">headers</a><span class="options"> = null</span></li>
+					<li><span class="type">string</span> <a href="#method" class="method">method</a><span class="options"> = "post"</span></li>
+					<li><span class="type">string</span> <a href="#type" class="method">type</a><span class="options"> = "asynchronous"</span></li>
+					<li><span class="type">string</span> <a href="#url" class="method">url</a><span class="options"> = ""</span></li>
+                    <li><span class="type">event</span> <a href="#create" class="method">onCreate</a><span class="options"> = null</span></li>
+					<li><span class="type">event</span> <a href="#uninitialized" class="method">onUninitialized</a><span class="options"> = null</span></li>
+					<li><span class="type">event</span> <a href="#loading" class="method">onLoading</a><span class="options"> = null</span></li>
+					<li><span class="type">event</span> <a href="#request" class="method">onRequest</a><span class="options"> = null</span></li>
+					<li><span class="type">event</span> <a href="#interaction" class="method">onInteraction</a><span class="options"> = null</span></li>
+					<li><span class="type">event</span> <a href="#finish" class="method">onFinish</a><span class="options"> = null</span></li>
+					<li><span class="type">event</span> <a href="#update" class="method">onUpdate</a><span class="options"> = null</span></li>
+                    <li><span class="type">event</span> <a href="#failure" class="method">onFailure</a><span class="options"> = null</span></li>
+				</ul>
+		</ul>
+	</div>
+	
+</fieldset>
+<br><br>
+
+<fieldset class="box">
+	<legend>PHP Sınıfının Kullanımı</legend>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">PHPLiveX</span> <a name="constructor" class="method">__constructor</a><span class="options"> ( array <b>$functions</b> )</span></div>
+        <div class="info">Nesneyi oluşturur ve isteğe bağlı olarak, belirtilen fonksiyonlar için &quot;Ajaxify&quot; metodunu uygular.</div>
+      <div class="example">$ajax = new PHPLiveX(array("myFunction"))</div>
+        <ul class="args">
+        	<li><span class="type">array</span> <b>$functions:</b> ajax ile kullanılacak fonksiyon isimleri</li>
+        </ul>
+    </div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">void</span> <a name="ajaxify" class="method">Ajaxify</a><span class="options"> ( array <b>$functions</b> )</span></div>
+        <div class="info">Belirtilen fonksiyonların ajax ile kullanılmasını sağlar. Yani, bu fonksiyonlar javascript kodu ile sayfa tekrar yüklenmeden çalıştırılabilir.</div>
+        <div class="example">$ajax->Ajaxify(array("myFunction"))<br>
+          <b>JavaScript ile kullanımı: myfunction(arg1, arg2, ..., object options)</b>
+        </div>
+		<ul class="args">
+        	<li><span class="type">array</span> <b>$functions:</b> ajax ile kullanılacak fonksiyon isimleri</li>
+        </ul>
+    </div>
+    
+     <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">void</span> <a name="ajaxifyall" class="method">AjaxifyAll</a><span class="options"> ()</span></div>
+       <div class="info">Sayfa üzerinde kullanıcı tarafından tanımlanmış tüm fonksiyonlar için &quot;ajaxify&quot; metodunu uygular.</div>
+        <div class="example">$ajax->AjaxifyAll()</div>
+    </div>
+    
+     <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">void</span> <a name="ajaxifyobjmethods" class="method">AjaxifyObjectMethods</a><span class="options"> ( array <b>$methods</b> )</span></div>
+        <div class="info">Belirtilen nesne metodları için &quot;Ajaxify&quot; metodunu uygular. PHP 'session' başlatılmış olmalıdır.</div>
+        <div class="example">
+			$myObject = new myClass()<br>
+			$ajax->Ajaxify(array(&quot;myObject&quot; =&gt; "myMethod", &quot;myObject2&quot; =&gt; &quot;myMethod2&quot;, ...))<br>
+            Veya $ajax->Ajaxify(array(&quot;myObject&quot; =&gt; array(&quot;method1&quot;, &quot;method2&quot;, ...)))<br>
+            <b>JavaScript ile kullanımı: myObject.myMethod(arg1, arg2, ..., object options)</b>
+	   </div>
+		<ul class="args">
+        	<li><span class="type">array</span> <b>$methods:</b> ajax ile kullanılacak metot ve nesnelerinin isimleri</li>
+       </ul>
+    </div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">void</span> <a name="ajaxifyobjects" class="method">AjaxifyObjects</a><span class="options"> ( array <b>$objects</b> )</span></div>
+        <div class="info">Belirtilen nesnelerin tüm metodları için &quot;Ajaxify&quot; metodunu uygular. PHP 'session' başlatılmış olmalıdır.</div>
+        <div class="example">
+        	$myObject = new myClass()<br>
+			$ajax->Ajaxify(array("myObject", &quot;myObject2&quot;, ...))<br>
+            <b>JavaScript ile kullanımı: myObject.anyMethod(arg1, arg2, ..., object options)</b>
+      </div>
+        <ul class="args">
+        	<li><span class="type">array</span> <b>$objects:</b> ajax ile kullanılacak nesne isimleri</li>
+        </ul>
+    </div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">static string</span> <a name="decode" class="method">Decode</a><span class="options"> ( string <b>$str</b>, string <b>$encoding </b>)</span></div>
+        <div class="info">UTF-8 ile şifrelenmiş bir ifadeyi, istenilen karakter kümesi ile şifreler. ANSI karakter kümelerini kullananlar için çok önemlidir (örn: ISO-8859-9). PHP &quot;json_decode&quot; fonksiyonundaki bir karakter hatası sebebiyle &quot;&ouml;&quot;, &quot;&#351;&quot;, &quot;&ccedil;&quot; gibi dile özgü karakterlerde ortaya çıkabilecek hataları engellemek için kullanılmalıdır. Yine de tam verim alabilmek için UTF-8 kullanılması önerilir.</div>
+        <div class="example">$str = $ajax->Decode($str, &quot;iso-8859-9&quot;)</div>
+        <ul class="args">
+        	<li><span class="type">string</span> <b>$str:</b> şifrelenmesi istenen ifade</li>
+            <li><span class="type">string</span> <b>$encoding:</b> kullanılacak karakter kümesi</li>
+        </ul>
+    </div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="encoding" class="method">Encoding</a><span class="options"> = &quot;UTF-8&quot;</span></div>
+        <div class="info">Ajax istemi ile elde edilen içeriğin karakter kümesi. Sayfanın karakter kümesi ile aynı olmalıdır.</div>
+      <div class="example">$ajax->Encoding = &quot;ISO-8859-9&quot;</div>
+    </div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">void</span> <a name="run" class="method">Run</a><span class="options"> ( bool <b>$includeJS = true</b>, string <b>$filepath = "phplivex.js"</b> )</span></div>
+        <div class="info">Ajax istemlerinin çalışmasını sağlayan javascript kodlarını oluşturur veya &quot;phplivex.js&quot; dosyasından içeriye alır. "AJAXIFY" metotlarının altında çağırılmalıdır.</div>
+        <div class="example">
+			$ajax->Run(true)</div>
+        <ul class="args">
+        	<li><span class="type">bool</span> <b>$includeJS:</b> JS sınıfını, JS dosyası ile içeriye almak için TRUE, sayfada oluşturtmak için FALSE</li>
+        	<li><span class="type">string</span> <b>$filepath:</b> JS sınıfının bulunduğu dosyanın yolu. Varsayılan yol "phplivex.js" olarak ayarlanmıştır.</li>
+        </ul>
+    </div>
+    
+</fieldset>
+<br><br>
+
+<fieldset class="box">
+	<legend>JS Sınıfının Kullanımı</legend>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">void</span> <a name="externalreq" class="method">ExternalRequest</a><span class="options"> ( object <b>options</b> )</span></div>
+        <div class="info">url parametresi ile belirtilen sayfaya ajax istemi gönderir.</div>
+      <div class="example">
+			new PHPLiveX().ExternalRequest({&quot;url&quot;: &quot;target.php&quot;, params: [param1, param2]})</div>
+        <ul class="args">
+        	<li><span class="type">object</span> <b>options:</b> ajax istemi ile kullanılması istenen parametreler</li>
+        </ul>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon.png"> <span class="type">bool</span> <a name="submitform" class="method">SubmitForm</a><span class="options"> ( HTMLFormElement|id|name <b>form</b>, [object <b>options]</b> )</span></div>
+        <div class="info">Ajax istemi ile form göndermek için kullanılır. Eğer formun "action" değeri girilmemişse, url parametresi ile belirtilmelidir. AJAX ile dosya yükleme özelliği şu anda mevcut değildir.</div>
+        <div class="example">
+			new PHPLiveX().SubmitForm(&quot;myForm&quot;, {&quot;method&quot;: &quot;get&quot;, &quot;target&quot;: &quot;alert&quot;})</div>
+        <ul class="args">
+        	<li><span class="type">HTMLFormElement|id|name </span><b>form</b><b>:</b> gönderilecek form</li>
+            <li><span class="type">object</span> <b>options:</b> ajax istemi ile kullanılması istenen parametreler</li>
+        </ul>
+    </div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">HTMLDomElement|id</span> <a name="target" class="method">target</a><span class="options"> = null</span></div>
+        <div class="info">Ajax istemi ile alınan verilerin, belirtilen dom elemanının "target_attr" parametresi ile belirlenen özelliğine aktarılmasını sağlar.</div>
+        <div class="example">
+		&lt;div id=&quot;testArea&quot;&gt;&lt;/div&gt;<br>&lt;script type=&quot;text/javascript&quot;&gt;myFunction({&quot;target&quot;: &quot;testArea&quot;})&lt;/script&gt;</div>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="target_attr" class="method">target_attr</a><span class="options"> = "innerContent"</span></div>
+        <div class="info">
+        	Eğer "target" parametresi ile bir dom elemanı belirtildiyse, o elemanın bu parametre ile belirlenen niteliği etkilenir.
+        	"innerContent" değeri, <i>innerHTML</i> ve <i>value</i> niteliklerini sembolize eder. 
+        	Eğer hedef bir "HTMLInputElement" ise, <i>value</i> yerine geçer, aksi takdirde <i>innerHTML</i> ... 
+        	
+        </div>
+        <div class="example">&lt;div id=&quot;testArea&quot; style=&quot;background-color:#FFFFFF&quot;&gt;&lt;/div&gt;<br />
+			&lt;script type=&quot;text/javascript&quot;&gt;<br>
+			myFunction({&quot;target&quot;: &quot;testArea&quot;, &quot;target_attr&quot;: &quot;style.backgroundColor&quot;})<br>
+			&lt;/script&gt;
+		</div>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="mode" class="method">mode</a><span class="options"> = "rw"</span></div>
+        <div class="info">
+        	Eğer "target" parametresi kullanılıyorsa, "mode" yazdırma türünü belirler:
+        	<br>
+        	<b>"rw"</b>: hedef dom elemanının belirlenen niteliğinin önceki değerini silerek, yenisini yazdırır
+        	<br>
+        	<b>"aw"</b>: hedef dom elemanının belirlenen niteliğinin önceki değerininin sonuna yenisini ekler
+        	<br>
+        	<b>"asw"</b>: hedef dom elemanının belirlenen niteliğinin önceki değerininin başına yenisini ekler
+        </div>
+		<div class="example">&lt;div id=&quot;testArea&quot;&gt; burada herhangi birşey olabilir &lt;/div&gt;<br>
+&lt;script type=&quot;text/javascript&quot;&gt;<br>myFunction({&quot;target&quot;: &quot;testArea&quot;, &quot;mode&quot;: &quot;aw&quot;})<br>&lt;/script&gt;</div>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">HTMLDomElement|id</span> <a name="preloader" class="method">preloader</a><span class="options"> = null</span></div>
+        <div class="info">
+        	Önyükleme için kullanılacak dom elemanıdır. Belirtilen dom elemanı <i>visibility</i> ya da <i>display</i> niteliklerinden biri ile gizlenmiş olmalıdır. PHPLiveX, bu elemanı yükleme sırasında görünür yapıp, işlem bittiğinde tekrar gizler. Gizleme işlemi için kullanılacak nitelik (display, visibility), "preloader_style" parametresi ile belirlenebilir.</div>
+        <div class="example">&lt;div id=&quot;preloadDiv&quot; style=&quot;visibility:hidden;&quot;&gt;Loading...&lt;/div&gt;<br />
+			&lt;script type=&quot;text/javascript&quot;&gt;<br>
+			myFunction({&quot;target&quot;: &quot;testArea&quot;, &quot;preloader&quot;: &quot;preloadDiv&quot;})<br>
+			&lt;/script&gt;
+		</div>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">HTMLDomElement|id</span> <a name="p_style" class="method">preloader_style</a><span class="options"> = "visibility"</span></div>
+        <div class="info">
+        	Önyükleyicinin gizleme için kullanacağı niteliktir: &quot;visibility&quot; ve &quot;display&quot;. İkisi arasında tek bir fark vardır. <i>visibility:hidden</i> ile gizlenen dom elemanı sayfada yer kaplayıp görünmezken, <i>display:none</i> kullanan eleman sayfada yer kaplamaz. Varsayılan değer <i>visibility</i> dir.</div>
+        <div class="example">&lt;div id=&quot;preloadDiv&quot; style=&quot;display:none;&quot;&gt;Yükleniyor...&lt;/div&gt;<br />
+			&lt;script type=&quot;text/javascript&quot;&gt;<br>
+			myFunction({&quot;preloader&quot;: &quot;preloadDiv&quot;, &quot;preloader_style&quot;: &quot;display&quot;})<br>
+			&lt;/script&gt;
+		</div>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">bool</span> <a name="c_content" class="method">clear_content</a><span class="options"> = false</span></div>
+        <div class="info">TRUE değerini aldığında, önyükleme sırasında "target" dom elemanının "target_attr" niteliğinin değerini boşaltır.</div>
+        <div class="example">&lt;div id=&quot;testArea&quot;&gt; örneğin burada bulunan yazılar önyükleme sırasında görünmeyecek &lt;/div&gt;<br />
+			&lt;script type=&quot;text/javascript&quot;&gt;<br>
+			myFunction({&quot;target&quot;: &quot;testArea&quot;, &quot;preloader&quot;: &quot;preloadDiv&quot;, &quot;clear_content&quot;: true})<br>
+			&lt;/script&gt;
+	  	</div>
+	</div>
+    
+    <div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="c_type" class="method">content_type</a><span class="options"> = "text"</span></div>
+        <div class="info">Ajax istemine alınan yanıtın içerik türüdür. "text" ve "json" değerlerini alabilir.</div>
+        <div class="example">myFunction({&quot;content_type&quot;: &quot;json&quot;, onFinish: function(response){ //response bir json nesnesidir } })<br>
+		</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">bool</span> <a name="e_scripts" class="method">eval_scripts</a><span class="options"> = true</span></div>
+        <div class="info">TRUE değeri ile, ajax istemine alınan yanıt javascript kodu içeriyorsa, bu kodlar otomatik olarak sayfaya eklenir ve çalıştırılır. Eğer bu betiklerin yoksayılması isteniyorsa FALSE değeri girilmelidir.</div>
+        <div class="example">myFunction({"eval_scripts": false})</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">int</span> <a name="interval" class="method">interval</a><span class="options"> = null</span></div>
+        <div class="info">Fonksiyon bu parametre ile belirlenen aralıklarda tekrar tekrar çalıştırılır. Zaman aralığı milisaniye cinsinden olmalıdır.</div>
+        <div class="example">myFunction({"target": "testArea", "interval": 10000})</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">object</span> <a name="params" class="method">params</a><span class="options"> = {}</span></div>
+		<div class="info">"ExternalRequest" metoduyla birlikte kullanılabilir. "url" parametresi ile belirlenen sayfaya gönderilecek değişken ve değerleri girilir.</div>
+		<div class="example">new PHPLiveX().ExternalRequest({"url": "test.php", "params": {"email": "blabla@gmail.com", "id": 350}})</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">object</span> <a name="headers" class="method">headers</a><span class="options"> = {}</span></div>
+        <div class="info">Ajax isteminin kullandığı varsayılan sayfa başlıklarına ilave yapılabilir. Aşağıdaki örnekte verilenler varsayılan başlıklardan ikisidir.</div>
+        <div class="example">myFunction({"headers": {"pragma": "no-cache", "content-type": "application/text; charset=UTF-8"}})</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="method" class="method">method</a><span class="options"> = "POST"</span></div>
+        <div class="info">Ajax isteminin kullandığı http metodudur. "post" ve "get" değerlerini alabilir.</div>
+        <div class="example">myFunction({"method": "GET"})</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="type" class="method">type</a><span class="options"> = "asynchronous"</span></div>
+        <div class="info">Ajax isteminin türüdür. Senkron ya da asenkron(varsayılan) olabilir. Senkron kullanımı pek tavsiye edilmez çünkü kullanışlı değildir. Tarayıcının kilitlenmesine ve aynı süreçte başka hiç bir işlem yapamamanıza sebep olur.</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">string</span> <a name="url" class="method">url</a><span class="options"> = ""</span></div>
+        <div class="info">AJAX isteminin gönderileceği sayfadır. "ExternalRequest" ve "SubmitForm" metotları ile kullanılır.</div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="create" class="method">onCreate</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp bağlantısı açılır açılmaz çalışır.</div>
+        <div class="example">myFunction({ &quot;onCreate&quot;: function(xmlhttp){ //Herhangi bir işlem... } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="uninitialized" class="method">onUninitialized</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp bağlantısı açılmadan hemen önce çalışır. (xmlhttp status değişkeni 0 değerini almaktadır)</div>
+        <div class="example">myFunction({ &quot;onUninitialized&quot;: function(xmlhttp){ //Herhangi bir işlem } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="loading" class="method">onLoading</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp istemi gönderilmeden hemen önce çalışır. (xmlhttp status değişkeni 1 değerini almaktadır)</div>
+        <div class="example">myFunction({ &quot;onLoading&quot;: function(xmlhttp){ //Herhangi bir işlem } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="request" class="method">onRequest</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp istemi işlenirken çalışır (xmlhttp status değişkeni 2 değerini almaktadır). <i>header</i> ve <i>status</i> değişkenleri kullanılabilir.</div>
+        <div class="example">myFunction({ &quot;onRequest&quot;: function(xmlhttp){ //Herhangi bir işlem } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="interaction" class="method">onInteraction</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp istemi gönderilmiştir ve yanıt alınmaktadır (xmlhttp status değişkeni 3 değerini almaktadır). <i>response</i> değişkeni, alınan yanıtın büyük bir kısmını içermektedir.</div>
+        <div class="example">myFunction({ &quot;onInteraction&quot;: function(xmlhttp){ //Herhangi bir işlem } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="finish" class="method">onFinish</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp istemi tamamlanmış ve yanıt tamamiyle alınmıştır. (xmlhttp status değişkeni 4 değerini almaktadır). Bu fonksiyon çalışmadan önce "target" parametresi de işleme sokulmaz. "target" parametresi işleme sokulduktan sonra çalışması için <i>onUpdate</i> kullanılmalıdır.</div>
+        <div class="example">myFunction({ &quot;onFinish&quot;: function(response, xmlhttp){ //Herhangi bir işlem } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="update" class="method">onUpdate</a><span class="options"> = null</span></div>
+        <div class="info">"onFinish" ile arasındaki tek fark, "target" parametresinden sonra işleme sokulmasıdır. "target" parametresi kullanılmıyorsa aradaki fark ortadan kalkar.</div>
+        <div class="example">myFunction({ &quot;onUpdate&quot;: function(response, xmlhttp){ //Herhangi bir işlem } })<br>
+      </div>
+	</div>
+	
+	<div class="usage">
+    	<div class="header"><img align="absmiddle" src="design/listicon2.png"> <span class="type">event</span> <a name="failure" class="method">onFailure</a><span class="options"> = null</span></div>
+        <div class="info">xmlhttp istemi sırasında yakalanan bir hata sonucunda çalışır.</div>
+        <div class="example">myFunction({ &quot;onFailure&quot;: function(error){ //Herhangi bir işlem } })<br>
+        </div>
+	</div>
+    
+</fieldset>
+
+</body>
+</html>

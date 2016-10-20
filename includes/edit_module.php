@@ -4,25 +4,32 @@
    *
    * PHP version 5
    *
-   * @category Decision_Theater_Software
    * @package  Csf
    * @author   Robert Pahle <robert.pahle@asu.edu>
    * @author   Rahul Salla <rahul.salla@asu.edu>
-   * @license  http://github.com/rahulsalla/csf/license.txt ASU Software License
-   * @link     http://github.com/rahulsalla/csf
+   * @license  http://decisiontheater.org/license.txt ASU Software License
+   * @link     http://decisiontheater.org/csf
    **/
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
 require_once "Zend/Db.php";
 require_once "config.php";
-require_once "../".$configuration['phplivex_path'].'/PHPLiveX.php';
+
+require_once("../components/csf/phplivex/PHPLiveX.php");
+session_start();
+require_once("user.php");
+checkauth('edit');
 
 
-$browser = $_SERVER['HTTP_USER_AGENT'];
 
-if (preg_match('/Firefox/i', $browser) == false) {
-    echo 'Warning: Using a browser other than Firefox is not supported...';
-    echo 'You are currently using '. $browser;
-}
+#$browser = $_SERVER['HTTP_USER_AGENT'];
+
+#if (preg_match('/Firefox/i', $browser) == false) {
+#    echo 'Warning: Using a browser other than Firefox is not supported...';
+#    echo 'You are currently using '. $browser;
+#}
 
 /**
  * Writes the contents of the passed in data argument to the filename
@@ -46,7 +53,7 @@ function EditModule_Write_data($data, $pathname, $filename, $sid) {
             fclose($fp);
             $info = 'Temp file written.';
             chdir('..');
-	    $ex	= '/usr/bin/php -f modules/processors/'.$filename.'.phpr '.$sid.' 2>&1';
+	    $ex	= '/usr/bin/php -f modules/operators/'.$filename.'.phpr '.$sid.' 2>&1';
 	    $point	= popen($ex,'r');
 	    $info = '';
 	    while(($buffer = fgets($point)) !== false) $info .= $buffer;
@@ -67,6 +74,9 @@ function EditModule_Write_data($data, $pathname, $filename, $sid) {
 			    else $info = "File was saved.\n\n".$info;
     			}
     		    }
+		    else {
+			$info = "Error opening file for writing.\n\n".$info;
+		    }
 		}
 	    }
         }
@@ -75,7 +85,7 @@ function EditModule_Write_data($data, $pathname, $filename, $sid) {
 }
 
 $ajax = new PHPLiveX(array("EditModule_Write_data"));
-$ajax->Run('../'.$configuration['phplivex_path'].'/phplivex.js');
+$ajax->Run("../components/csf/phplivex/phplivex.js");
 
 $db = Zend_Db::factory('pdo_pgsql', $database);
 $db->getConnection();
@@ -108,63 +118,62 @@ if(isset($_GET['modulename']))
 <html>
 <head>
 <script language="javascript" type="text/javascript">
-	function updated(info)
-{
-    alert(info);
-}
 
-function testfunction(data, value)
+function testfunction(value)
 {
+    value = encodeURIComponent(value);
     EditModule_Write_data(value,
-               "<?php echo '../modules/processors/'  ?>",
+               "<?php echo '../modules/operators/'  ?>",
                "<?php echo $value['phpfile'].'.php' ?>",
                "<?php echo $id ?>",
-               {'onUpdate': function(response){updated(response);}});
+               {'onUpdate': function(response){alert(response);}});
 }
 </script>
 
 <script language="javascript" type="text/javascript" 
-    src="../dist/edit_area/edit_area_full.js"></script>
+    src="../components/bower/ace/build/src/ace.js">
+</script>
 
 	<script language="javascript" type="text/javascript">
-	editAreaLoader.init({
-        id : "textarea_1"			   // textarea id
-                ,syntax: "php"		   // syntax to be used for highlighting
-                ,start_highlight: true // display with highlight mode on start-up
-                ,toolbar: "save, |, undo, redo"
-                ,allow_toggle: false
-                ,save_callback: "testfunction"
-                });
+var editor;
+window.onload = function() {
+    editor = ace.edit("textarea_1");
+    editor.setTheme("ace/theme/vibrant_ink");
+    editor.getSession().setMode("ace/mode/php");
+    
+//    alert(editor.getSession().doc.getAllLines());
+};
 </script>
 
 </head>
-<body style="margin: 0; padding: 0; height: 100%; border: none;">
-<form method="post">
-<textarea id="textarea_1" name="content" cols="80" rows="30" 
-    style="width:100%;height:100%;"><?php
-if (file_exists('../modules/processors/'.$value['phpfile'].'.php')) {
-    $data = file('../modules/processors/'.$value['phpfile'].'.php');
+<body style="margin: 0; padding: 0; height: 100%; width:100%; border: none;">
+<pre id="textarea_1" style="margin:0px; position:absolute; top:20px; left:0px;right:0px;bottom:0px;"><?php
+
+if (file_exists('../modules/operators/'.$value['phpfile'].'.php')) {
+    $data = file('../modules/operators/'.$value['phpfile'].'.php');
     foreach ($data as $info) {
-        echo $info;
+        echo htmlspecialchars($info);
     }
 } else {
     $data	= file('../modules/template.php');
     foreach ($data as &$info) {
         $info=str_replace('getsetup_module_test','getsetup_module_'.$value['phpfile'],$info);
-        echo $info;
+        echo htmlspecialchars($info);
     }
-    file_put_contents('../modules/processors/'.$value['phpfile'].'.php',$data);
+    file_put_contents('../modules/operators/'.$value['phpfile'].'.php',$data);
     $sql = 'update station_variables set value=\''.$value['phpfile'].'\' where sid='.$id.' and name=\'phpfile\'';
     $result = $db->fetchAll($sql);
 }
+?></pre>
 
-?></textarea>
-</form> 
+<div style="margin:0px;position:absolute;z-index:1000;top:0px;left:0px;width:45px;height:20px;background-color:#BBBBBB"></div>
+<div style="margin:0px;position:absolute;z-index:1000;top:0px;left:45px;right:0px;height:20px;background-color:#BBBBBB">
+<input type="button" value="Save" onclick="testfunction(editor.getSession().doc.getValue()); " style="margin:0;padding:0;">&nbsp;<?
+
+echo "<input type=\"button\" value=\"Run\" onclick=\"var newWindow = window.open('../modules/operators/".$value['phpfile'].".php?id=".$_GET['id']."', '_blank'); \" style=\"margin:0;padding:0;\">&nbsp;&nbsp;";
+echo "Editing: ".$value['phpfile'];
+?>
+</div>
 </body>
 </html>
 
-<?php
-echo "<a href='../modules/processors/".$value['phpfile'].".php?id="
-.$_GET['id']."' target='_blank'>Run</a><br>";
-echo "Name: ".$value['name']." (".$svid['name'].")<br>";
-echo "FileName: ".$value['phpfile']." (".$svid['phpfile'].")<br>";
