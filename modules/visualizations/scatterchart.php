@@ -1,7 +1,7 @@
 <?
 function getsetup_viz_scatterchart()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a> based on the Google Chart API.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Jaycen Horton, Erzhena Soktoeva.';
 	$options['_MODULEDESCRIPTION']		= 'Each row in the table represents a set of data points with the same x-axis value.
 	
 	<p>Columns:</p>
@@ -64,7 +64,7 @@ function getsetup_viz_scatterchart()
 	$options[50]['name']				= 'backgroundColor';
 	$options[50]['description']			= 'background color of the chart';
 	$options[50]['detail']				= 'Default: black';
-	$options[50]['type']				= 'Text';
+	$options[50]['type']				= 'Color';
 	$options[50]['link']				= 'link to further information..?';
 	$options[50]['lookup']				= ''; 
 	$options[50]['default']				= 'black';
@@ -100,7 +100,7 @@ function getsetup_viz_scatterchart()
 	$options[80]['name']				= 'tablename';
 	$options[80]['description']			= 'From this table';
 	$options[80]['detail']				= 'choose the table you want to graph. refer to the module description for table format';
-	$options[80]['type']				= 'Text';
+	$options[80]['type']				= 'Table';
 	$options[80]['link']				= 'link to further information..?';
 	$options[80]['lookup']				= ''; 
 	$options[80]['default']				= '';
@@ -124,7 +124,7 @@ function getsetup_viz_scatterchart()
 	$options[100]['name']				= 'titleTextColor';
 	$options[100]['description']		= 'Please select the color the chart title';
 	$options[100]['detail']				= 'Default: white';
-	$options[100]['type']				= 'Text';
+	$options[100]['type']				= 'Color';
 	$options[100]['link']				= 'link to further information..?';
 	$options[100]['lookup']				= ''; 
 	$options[100]['default']			= 'white';
@@ -174,7 +174,7 @@ function getsetup_viz_scatterchart()
 	$options[140]['name']				= 'legendTextColor';
 	$options[140]['description']		= 'color of the legend font';
 	$options[140]['detail']				= 'This is the color of the legend font in the chart';
-	$options[140]['type']				= 'Text';
+	$options[140]['type']				= 'Color';
 	$options[140]['link']				= 'link to further information..?';		
 	$options[140]['lookup']				= '';
 	$options[140]['default']			= 'black';
@@ -211,7 +211,7 @@ function getsetup_viz_scatterchart()
 	$options[170]['name']				= 'tooltipTextColor';
 	$options[170]['description']		= 'color of the tooltip';
 	$options[170]['detail']				= 'Default: black';
-	$options[170]['type']				= 'Text';
+	$options[170]['type']				= 'Color';
 	$options[170]['link']				= 'link to further information..?';
 	$options[170]['lookup']				= ''; 
 	$options[170]['default']			= 'black';
@@ -307,7 +307,7 @@ function getsetup_viz_scatterchart()
 	$options[280]['name']				= 'vAxisColor';
 	$options[280]['description']		= 'Color of the vertical axis text';
 	$options[280]['detail']				= 'This is the color of the vertical axis text. Default: black';
-	$options[280]['type']				= 'Text';
+	$options[280]['type']				= 'Color';
 	$options[280]['link']				= 'link to further information..?';
 	$options[280]['lookup']				= ''; 
 	$options[280]['default']			= 'black';
@@ -315,6 +315,30 @@ function getsetup_viz_scatterchart()
 	$options[280]['repeatable']			= 'no';
 	$options[280]['perdashboard']		= 'yes';
 	$options[280]['dependenton']		= '';
+	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
 	
 	return($options);
 }
@@ -324,9 +348,15 @@ function place_viz_scatterchart($sid, $value, $options, $setup)
 
 	$dashboard_options = $options['dashboard_options'];
 	
-	echo '<div id="cover'.$sid.'">';
-	echo '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:'.($dashboard_options['width']).'; height:'.($dashboard_options['height']).';">';
-	echo '</div>';
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
+	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= '<div id="velement'.$sid.'" style="position:absolute;z-index:1; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']).'px; height:'.($dashboard_options['height']).'px;">';
+	$str.= '</div>';
+	$str.= '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:2; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str.= '</div>';
+	$str.= '</div>';
 	
 	$content = '';
 	if(isset($options['tablename']))
@@ -364,16 +394,17 @@ function place_viz_scatterchart($sid, $value, $options, $setup)
 
     }
 
-	echo $content;
-	echo '</div>';
-	echo '	<script language="JavaScript" type="text/javascript">
+	$str.= $content;
+	$str.= '</div>';
+	$str.= '	<script language="JavaScript" type="text/javascript">
+				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function reload'.$sid.'(dashboard, response)
 				{
 					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("velement'.$sid.'").style.border=\'2px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
 				}
 				function reload_update'.$sid.'(response)
 				{
@@ -393,9 +424,11 @@ function place_viz_scatterchart($sid, $value, $options, $setup)
 				width:'.($dashboard_options['width']).', 
 				height:'.($dashboard_options['height']).', 
 				title:\''.$options['title'].'\'});
+				document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 					
 				}
 			</script>';
+		return($str);
 }
 
 

@@ -1,8 +1,8 @@
 <?php
 function getsetup_viz_piechart()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a> based on the Google Chart API.<br>';
-	$options['_MODULEDESCRIPTION']		= 'Each row in the table represents a slice.
+	$options['_CREDITS'] = 'Primary Developer: Rahul Salla.';
+	$options['_MODULEDESCRIPTION'] = 'Each row in the table represents a slice.
 	
 	<p>Columns:</p>
 		<ul>
@@ -10,22 +10,19 @@ function getsetup_viz_piechart()
 		<li>Column 1: number</li>
 		<li>Column ..</li>
 		<li>Column N: number</li>
-		</ul>
-		
-		
-		For more detailed information, please, refer to <a href="https://developers.google.com/chart/interactive/docs/gallery/piechart">Google Charts PieChart</a>';
+		</ul>';
 
-	$options[10]['name']				= 'x';
-	$options[10]['description']			= 'Placement x coordinate';
-	$options[10]['detail']				= 'Default: 500';
-	$options[10]['type']				= 'Integer';
-	$options[10]['link']				= 'link to further information..?';
-	$options[10]['lookup']				= ''; 
-	$options[10]['default']				= '500';
-	$options[10]['optional']			= 'no';
-	$options[10]['repeatable']			= 'no';
+	$options[10]['name']			= 'x';
+	$options[10]['description']		= 'Placement x coordinate';
+	$options[10]['detail']			= 'Default: 500';
+	$options[10]['type']			= 'Integer';
+	$options[10]['link']			= 'link to further information..?';
+	$options[10]['lookup']			= ''; 
+	$options[10]['default']			= '500';
+	$options[10]['optional']		= 'no';
+	$options[10]['repeatable']		= 'no';
 	$options[10]['perdashboard']		= 'yes';
-	$options[10]['dependenton']			= '';
+	$options[10]['dependenton']		= '';
 
 	$options[20]['name']				= 'y';
 	$options[20]['description']			= 'Placement y coordinate';
@@ -66,7 +63,7 @@ function getsetup_viz_piechart()
 	$options[50]['name']				= 'backgroundColor';
 	$options[50]['description']			= 'background color of the chart';
 	$options[50]['detail']				= 'Default: black';
-	$options[50]['type']				= 'Text';
+	$options[50]['type']				= 'Color';
 	$options[50]['link']				= 'link to further information..?';
 	$options[50]['lookup']				= ''; 
 	$options[50]['default']				= 'black';
@@ -102,7 +99,7 @@ function getsetup_viz_piechart()
 	$options[80]['name']				= 'tablename';
 	$options[80]['description']			= 'From this table';
 	$options[80]['detail']				= 'choose the table you want to graph. refer to the module description for table format';
-	$options[80]['type']				= 'Text';
+	$options[80]['type']				= 'Table';
 	$options[80]['link']				= 'link to further information..?';
 	$options[80]['lookup']				= ''; 
 	$options[80]['default']				= '';
@@ -126,7 +123,7 @@ function getsetup_viz_piechart()
 	$options[100]['name']				= 'titleTextColor';
 	$options[100]['description']		= 'Please select the color the chart title';
 	$options[100]['detail']				= 'Default: white';
-	$options[100]['type']				= 'Text';
+	$options[100]['type']				= 'Color';
 	$options[100]['link']				= 'link to further information..?';
 	$options[100]['lookup']				= ''; 
 	$options[100]['default']			= 'white';
@@ -176,7 +173,7 @@ function getsetup_viz_piechart()
 	$options[140]['name']				= 'legendTextColor';
 	$options[140]['description']		= 'color of the legend font';
 	$options[140]['detail']				= 'Default: white';
-	$options[140]['type']				= 'Text';
+	$options[140]['type']				= 'Color';
 	$options[140]['link']				= 'link to further information..?';		
 	$options[140]['lookup']				= '';
 	$options[140]['default']			= 'white';
@@ -213,7 +210,7 @@ function getsetup_viz_piechart()
 	$options[170]['name']				= 'tooltipTextColor';
 	$options[170]['description']		= 'color of the tooltip';
 	$options[170]['detail']				= 'Default: chocolate';
-	$options[170]['type']				= 'Text';
+	$options[170]['type']				= 'Color';
 	$options[170]['link']				= 'link to further information..?';
 	$options[170]['lookup']				= ''; 
 	$options[170]['default']			= 'chocolate';
@@ -246,15 +243,45 @@ function getsetup_viz_piechart()
 	$options[190]['perdashboard']		= 'yes';
 	$options[190]['dependenton']		= '';
 	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
+	
 	return($options);
 }
 function place_viz_piechart($sid, $value, $options, $setup)
 {
 	$dashboard_options = $options['dashboard_options'];
 	
-	echo '<div id="cover'.$sid.'">';
-	echo '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:'.($dashboard_options['width']).'; height:'.($dashboard_options['height']).';">';
-	echo '</div>';
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
+	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= '<div id="velement'.$sid.'" style="position:absolute;z-index:1; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']).'px; height:'.($dashboard_options['height']).'px;">';
+	$str.= '</div>';
+	$str.= '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:2; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str.= '</div>';
+	$str.= '</div>';
 	
 	$content = '';
 	if(isset($options['title']))
@@ -269,9 +296,13 @@ function place_viz_piechart($sid, $value, $options, $setup)
 			{';
 				$content .= reload_viz_piechart($sid, $value, $options, $setup);
 				$content .= 'pie_chart'.$sid.' = new google.visualization.PieChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {backgroundColor:\''.($dashboard_options['backgroundColor']).'\',
+	// Changed by Shrijal, the color array		
+				//colors:[\'#cc3a0e\',\'#067fbf\'],
+			//	colors:[\'#1f77b4\',\'#2ca02c\'],
+				colors:[\'#067fbf\',\'#849470\'],
 				fontSize:\''.($dashboard_options['fontSize']).'\', 
 				fontName:\''.($dashboard_options['fontName']).'\', 
-				legendTextStyle:{color:\''.($dashboard_options['legendTextColor']).'\',fontName:\''.($dashboard_options['legendfontName']).'\',fontsize:\''.($dashboard_options['legendTextSize']).'\'}, 
+				legendTextStyle:{color:\''.($dashboard_options['legendTextColor']).'\',fontName:\''.($dashboard_options['legendfontName']).'\',fontSize:\''.($dashboard_options['legendTextSize']).'\'}, 
 				titleTextStyle:{color:\''.($dashboard_options['titleTextColor']).'\', 
 				fontName:\''.($dashboard_options['titlefontName']).'\',
 				fontSize:\''.($dashboard_options['titleTextSize']).'\'},
@@ -292,41 +323,49 @@ function place_viz_piechart($sid, $value, $options, $setup)
 
     }
 
-	echo $content;
-	echo '</div>';
+	$str.= $content;
+	$str.= '</div>';
 	
-	echo '	<script language="JavaScript" type="text/javascript">
-				function reload'.$sid.'(dashboard, response)
-				{
-					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
+		$str.= '	<script language="JavaScript" type="text/javascript">
+					document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
+					function reload'.$sid.'(dashboard, response)
+					{
+						place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
+					}
+					function mark'.$sid.'(dashboard, response)
+					{
+						document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
+					}
+					function reload_update'.$sid.'(response)
+					{
+						eval(response);
+						document.getElementById("velement'.$sid.'").style.border=\'none\';
+						pie_chart'.$sid.' = new google.visualization.PieChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {backgroundColor:\''.($dashboard_options['backgroundColor']).'\',
+				//	colors:[\'#cc3a0e\',\'#067fbf\'],
+				//colors:[\'#1f77b4\',\'#2ca02c\'],
+				colors:[\'#067fbf\',\'#849470\'],
+	// Changed by Shrijal Add the colors in the array above
+					fontSize:\''.($dashboard_options['fontSize']).'\', 
+					fontName:\''.($dashboard_options['fontName']).'\', 
+					legendTextStyle:{color:\''.($dashboard_options['legendTextColor']).'\',fontName:\''.($dashboard_options['legendfontName']).'\',fontSize:\''.($dashboard_options['legendTextSize']).'\'}, 
+					titleTextStyle:{color:\''.($dashboard_options['titleTextColor']).'\', 
+					fontName:\''.($dashboard_options['titlefontName']).'\',
+					fontSize:\''.($dashboard_options['titleTextSize']).'\'},
+					tooltipTextStyle:{color:\''.($dashboard_options['tooltipTextColor']).'\',
+					fontName:\''.($dashboard_options['tooltipfontName']).'\',
+					fontSize:\''.($dashboard_options['tooltipTextSize']).'\'}, 
+					hAxis: {textStyle:{color:\'white\'}, titleTextStyle: {color: \'white\'}}, 
+					vAxis: {textStyle:{color:\'white\'}, titleTextStyle: {color: \'white\'}}, 
+					legend:\''.($dashboard_options['legendlocation']).'\',
+					width:'.($dashboard_options['width']).', 
+					height:'.($dashboard_options['height']).', 
+					title:\''.$options['title'].'\'});
+					document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 				}
-				function mark'.$sid.'(dashboard, response)
-				{
-					document.getElementById("velement'.$sid.'").style.border=\'2px solid red\';
-				}
-				function reload_update'.$sid.'(response)
-				{
-					eval(response);
-					document.getElementById("velement'.$sid.'").style.border=\'none\';
-					pie_chart'.$sid.' = new google.visualization.PieChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {backgroundColor:\''.($dashboard_options['backgroundColor']).'\',
-				fontSize:\''.($dashboard_options['fontSize']).'\', 
-				fontName:\''.($dashboard_options['fontName']).'\', 
-				legendTextStyle:{color:\''.($dashboard_options['legendTextColor']).'\',fontName:\''.($dashboard_options['legendfontName']).'\',fontsize:\''.($dashboard_options['legendTextSize']).'\'}, 
-				titleTextStyle:{color:\''.($dashboard_options['titleTextColor']).'\', 
-				fontName:\''.($dashboard_options['titlefontName']).'\',
-				fontSize:\''.($dashboard_options['titleTextSize']).'\'},
-				tooltipTextStyle:{color:\''.($dashboard_options['tooltipTextColor']).'\',
-				fontName:\''.($dashboard_options['tooltipfontName']).'\',
-				fontSize:\''.($dashboard_options['tooltipTextSize']).'\'}, 
-				hAxis: {textStyle:{color:\'white\'}, titleTextStyle: {color: \'white\'}}, 
-				vAxis: {textStyle:{color:\'white\'}, titleTextStyle: {color: \'white\'}}, 
-				legend:\''.($dashboard_options['legendlocation']).'\',
-				width:'.($dashboard_options['width']).', 
-				height:'.($dashboard_options['height']).', 
-				title:\''.$options['title'].'\'});
-			}
 
-			</script>';
+				</script>';
+	
+return($str);	
 }
 //					pie_chart'.$sid.' = new google.visualization.PieChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {backgroundColor:\'#000000\', fontSize:\''.($config[0]).'\', fontName:\''.($config[1]).'\', legendTextStyle:{color: \'white\'}, titleTextStyle:{color: \'white\', fontName:\'Trebuchet MS\'}, hAxis: {textStyle:{color:\'white\'}, titleTextStyle: {color: \'white\'}}, vAxis: {textStyle:{color:\'white\'}, titleTextStyle: {color: \'white\'}}, legend:\''.($config[2]).'\', width:'.($xy[0]).', height:'.($xy[1]).', title:\''.$options[2].'\'});
 

@@ -1,7 +1,7 @@
 <?
 function getsetup_viz_ImageAreaChart()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a> based on the Google Chart API.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Jaycen Horton, Erzhena Soktoeva.';
 	$options['_MODULEDESCRIPTION']		= 'Each column represents a line in the chart. <b>Tip:</b> try to make column 1 have higher points than column 2, column 2 higher than column 3, and so on.
 	
 	<p>Columns:</p>
@@ -12,7 +12,7 @@ function getsetup_viz_ImageAreaChart()
 		<li>Column N: number</li>
 		</ul>
 		
-		<p>For more detailed information, please, refer to <a href="https://developers.google.com/chart/interactive/docs/gallery/imageareachart">Google Charts ImageAreaChart/a></p>';
+		<p>For more detailed information, please, refer to <a href="https://developers.google.com/chart/interactive/docs/gallery/imageareachart">Google Charts ImageAreaChart</a></p>';
 
 	$options[10]['name']				= 'x';
 	$options[10]['description']			= 'Placement x coordinate';
@@ -65,7 +65,7 @@ function getsetup_viz_ImageAreaChart()
 	$options[80]['name']				= 'tablename';
 	$options[80]['description']			= 'From this table';
 	$options[80]['detail']				= 'choose the table you want to graph. refer to the module description for table format';
-	$options[80]['type']				= 'Text';
+	$options[80]['type']				= 'Table';
 	$options[80]['link']				= 'link to further information..?';
 	$options[80]['lookup']				= ''; 
 	$options[80]['default']				= '';
@@ -110,6 +110,30 @@ function getsetup_viz_ImageAreaChart()
 	$options[140]['perdashboard']		= 'yes';
 	$options[140]['dependenton']		= '';	
 	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
+	
 	return($options);
 	
 }
@@ -117,11 +141,18 @@ function getsetup_viz_ImageAreaChart()
 
 function place_viz_ImageAreaChart($sid, $value, $options, $setup)
 {
-	$dashboard_options = $options['dashboard_options'];
 	
-	echo '<div id="cover'.$sid.'">';
-	echo '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:'.($dashboard_options['width']).'; height:'.($dashboard_options['height']).';">';
-	echo '</div>';
+	$dashboard_options = $options['dashboard_options'];
+
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
+	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= '<div id="velement'.$sid.'" style="position:absolute;z-index:1; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']).'px; height:'.($dashboard_options['height']).'px;">';
+	$str.= '</div>';
+	$str.= '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:2; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str.= '</div>';
+	$str.= '</div>';
 	
 	$content = '';
 	
@@ -153,20 +184,22 @@ function place_viz_ImageAreaChart($sid, $value, $options, $setup)
 
 }
 
-echo $content;
-	echo '</div>';
+$str.= $content;
+	$str.= '</div>';
 	
-	echo '	<script language="JavaScript" type="text/javascript">
+	$str.= '	<script language="JavaScript" type="text/javascript">
+				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function reload'.$sid.'(dashboard, response)
 				{
 					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("velement'.$sid.'").style.border=\'2px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
 				}
 				function reload_update'.$sid.'(response)
 				{
+					document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 					eval(response);
 					image_areachart'.$sid.' = new google.visualization.ImageAreaChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', 
 				{
@@ -178,6 +211,7 @@ echo $content;
                 });
 			}
 			</script>';
+		return($str);
 }
 
 
@@ -187,6 +221,7 @@ function reload_viz_ImageAreaChart($sid, $value, $options, $setup)
 	global $db;
 	
 	$dashboard_options = $options['dashboard_options'];
+	
 	if(false)
 	{
 		$name_type = explode(',',$options[4]);

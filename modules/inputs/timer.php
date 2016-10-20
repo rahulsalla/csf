@@ -1,7 +1,7 @@
 <?php
 function getsetup_input_timer()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a>.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle.';
 	$options['_MODULEDESCRIPTION']		= 'More info will follow.';
 	
 	$options[10]['name']				= 'x';
@@ -34,7 +34,7 @@ function getsetup_input_timer()
 	$options[30]['type']				= 'Integer';
 	$options[30]['link']				= 'link to further information..?';
 	$options[30]['lookup']				= ''; #this would be if i have a dropdown and want to lookup the value you would enter a sql script with the column that comes back being the selection
-	$options[30]['default']				= '10';
+	$options[30]['default']				= '100';
 	$options[30]['optional']			= 'no';
 	$options[30]['repeatable']			= 'no';
 	$options[30]['perdashboard']		= 'no';

@@ -1,7 +1,7 @@
 <?
 function getsetup_input_checkbox()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a>.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Jaycen Horton.';
 	$options['_MODULEDESCRIPTION']		= 'This module will create a checkbox input. The once the checkbox is triggered the generated values are yes and no.';
 
 	$options[0]['name']					= 'css';
@@ -38,6 +38,59 @@ function getsetup_input_checkbox()
 	$options[20]['repeatable']			= 'no';
 	$options[20]['perdashboard']		= 'yes';
 	$options[20]['dependenton']			= '';
+
+
+
+
+	$options[1]['name']                            = 'checkboxWidth';
+        $options[1]['description']                     = 'Please select the width for checkbox default is 20';
+        $options[1]['detail']                          = 'This sets the Width of checkbox ';
+        $options[1]['type']                            = 'Integer';
+        $options[1]['link']                            = 'link to further information..?';
+        $options[1]['lookup']                          = '';
+        $options[1]['default']                         = '20';
+        $options[1]['optional']                        = 'yes';
+        $options[1]['repeatable']                      = 'no';
+        $options[1]['perdashboard']           	       = 'yes';
+        $options[1]['dependenton']                     = '';
+
+ 	$options[2]['name']                            = 'checkboxHeight';
+        $options[2]['description']                     = 'Please select the Height for checkbox Default is 20';
+        $options[2]['detail']                          = 'This sets the Height of checkbox.';
+        $options[2]['type']                            = 'Integer';
+        $options[2]['link']                            = 'link to further information..?';
+        $options[2]['lookup']                          = '';
+        $options[2]['default']                         = '20';
+        $options[2]['optional']                        = 'yes';
+        $options[2]['repeatable']                      = 'no';
+        $options[2]['perdashboard']            		= 'yes';
+        $options[2]['dependenton']                     = '';
+
+
+	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
 	
 	
 	
@@ -65,13 +118,22 @@ function place_input_checkbox($sid, $value, $options, $setup)
 {
 
 	$dashboard_options = $options['dashboard_options'];
+	if ($dashboard_options['loadingHighlightThickness']>6)
+		$dashboard_options['loadingHighlightThickness']==6;
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
 	echo '<div id="cover'.$sid.'">';
+	
+	//echo '<div id="celement'.$sid.'" style="position:absolute;z-index:10000; top:'.($dashboard_options['y']+3).'px; left:'.($dashboard_options['x']+4).'px; width:'.(13-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.(13-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	echo '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:20; top:'.($dashboard_options['y']+3).'px; left:'.($dashboard_options['x']+4).'px; width:'.(13-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.(13-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	echo '</div>';
 	echo reload_input_checkbox($sid, $value, $options, $setup);
 	echo '</div>';
 	
 	
 		  
 	echo '	<script language="JavaScript" type="text/javascript">
+				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function update'.$sid.'(dashboard, response)
 				{
 					place_input(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
@@ -82,11 +144,12 @@ function place_input_checkbox($sid, $value, $options, $setup)
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("element'.$setup['value_svid'].'").style.border=\'1px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
 				}
 				function reload_update'.$sid.'(response)
 				{
 					document.getElementById("cover'.$sid.'").innerHTML = response;
+					document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 				}
 			</script>';
 }
@@ -95,11 +158,16 @@ function reload_input_checkbox($sid, $value, $options, $setup)
 {
 
 	$dashboard_options = $options['dashboard_options'];
-	//Problem here?? --Jaycen (undefined variable when unchecked)
 	if($value=='yes') $val='CHECKED';
 	else $val='';
 	
-	$content = '<div id="element'.$sid.'" style="z-index:10; position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:20; height:20;">
+	$content = '
+
+<style> 
+input[type=checkbox] {width:'.$dashboard_options['checkboxWidth'].'px; height:'.$dashboard_options['checkboxHeight'].'px;}
+</style>
+
+<div id="element'.$sid.'" style="z-index:10; position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:20; height:20;">
 			<INPUT CLASS=SmallInput STYLE="text-align: left; padding-left: 5px" TYPE="checkbox" SIZE=3 '.$val.' id="'.$setup['value_svid'].'" value="'.$value.'" onchange="validate_checkbox(this.id, this.value, {\'onUpdate\': function(response,xmlhttp){make_update(\''.$sid.'\',response)}});">
 		  </div>';
 	return($content);

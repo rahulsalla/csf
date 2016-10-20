@@ -1,7 +1,7 @@
 <?
 function getsetup_viz_barchart()
 {
-	$options['_CREDITS']				= 'This module has been developed by the <a href="http://dt.asu.edu">Decision Theater</a> based on the Google Chart API.<br>';
+	$options['_CREDITS']				= 'Main Developters: Robert Pahle, Jaycen Horton, Erzhena Soktoeva.';
 	$options['_MODULEDESCRIPTION']		= '<p>Each row in the table represents a group of bars.</p>
 	<p>Columns:</p>
 		<ul>
@@ -20,7 +20,7 @@ function getsetup_viz_barchart()
 	$options[10]['type']				= 'Integer';
 	$options[10]['link']				= 'link to further information..?';
 	$options[10]['lookup']				= ''; 
-	$options[10]['default']				= '500';
+	$options[10]['default']				= '10';
 	$options[10]['optional']			= 'no';
 	$options[10]['repeatable']			= 'no';
 	$options[10]['perdashboard']		= 'yes';
@@ -32,7 +32,7 @@ function getsetup_viz_barchart()
 	$options[20]['type']				= 'Integer';
 	$options[20]['link']				= 'link to further information..?';
 	$options[20]['lookup']				= ''; 
-	$options[20]['default']				= '500';
+	$options[20]['default']				= '10';
 	$options[20]['optional']			= 'no';
 	$options[20]['repeatable']			= 'no';
 	$options[20]['perdashboard']		= 'yes';
@@ -40,11 +40,11 @@ function getsetup_viz_barchart()
 	
 	$options[30]['name']				= 'width';
 	$options[30]['description']			= 'Width of the chart';
-	$options[30]['detail']				= 'This is the width of the chart in pixels. Default: 500';
+	$options[30]['detail']				= 'This is the width of the chart in pixels. Default: 400';
 	$options[30]['type']				= 'Integer';
 	$options[30]['link']				= 'link to further information..?';
 	$options[30]['lookup']				= ''; 
-	$options[30]['default']				= '500';
+	$options[30]['default']				= '400';
 	$options[30]['optional']			= 'no';
 	$options[30]['repeatable']			= 'no';
 	$options[30]['perdashboard']		= 'yes';
@@ -52,11 +52,11 @@ function getsetup_viz_barchart()
 
 	$options[40]['name']				= 'height';
 	$options[40]['description']			= 'Height of the chart';
-	$options[40]['detail']				= 'Default: 500';
+	$options[40]['detail']				= 'Default: 400';
 	$options[40]['type']				= 'Integer';
 	$options[40]['link']				= 'link to further information..?';
 	$options[40]['lookup']				= ''; 
-	$options[40]['default']				= '500';
+	$options[40]['default']				= '400';
 	$options[40]['optional']			= 'no';
 	$options[40]['repeatable']			= 'no';
 	$options[40]['perdashboard']		= 'yes';
@@ -65,10 +65,10 @@ function getsetup_viz_barchart()
 	$options[50]['name']				= 'backgroundColor';
 	$options[50]['description']			= 'background color of the chart';
 	$options[50]['detail']				= 'Default: black';
-	$options[50]['type']				= 'Text';
+	$options[50]['type']				= 'Color';
 	$options[50]['link']				= 'link to further information..?';
 	$options[50]['lookup']				= ''; 
-	$options[50]['default']				= 'black';
+	$options[50]['default']				= '#000000';
 	$options[50]['optional']			= 'no';
 	$options[50]['repeatable']			= 'no';
 	$options[50]['perdashboard']		= 'yes';
@@ -101,7 +101,7 @@ function getsetup_viz_barchart()
 	$options[80]['name']				= 'tablename';
 	$options[80]['description']			= 'From this table';
 	$options[80]['detail']				= 'choose the table you want to graph. refer to the module description for table format';
-	$options[80]['type']				= 'Text';
+	$options[80]['type']				= 'Table';
 	$options[80]['link']				= 'link to further information..?';
 	$options[80]['lookup']				= ''; 
 	$options[80]['default']				= '';
@@ -125,10 +125,10 @@ function getsetup_viz_barchart()
 	$options[100]['name']				= 'titleTextColor';
 	$options[100]['description']		= 'Please select the color the chart title';
 	$options[100]['detail']				= 'Default: white';
-	$options[100]['type']				= 'Text';
+	$options[100]['type']				= 'Color';
 	$options[100]['link']				= 'link to further information..?';
 	$options[100]['lookup']				= ''; 
-	$options[100]['default']			= 'white';
+	$options[100]['default']			= '#FFFFFF';
 	$options[100]['optional']			= 'no';
 	$options[100]['repeatable']			= 'no';
 	$options[100]['perdashboard']		= 'yes';
@@ -164,7 +164,7 @@ function getsetup_viz_barchart()
 	$options[130]['detail']				= 'Default: none ';
 	$options[130]['type']				= 'Dropdown';
 	$options[130]['link']				= 'link to further information..?';
-	$options[130]['lookup']				= '|right|top|bottom|none';
+	$options[130]['lookup']				= 'right|top|bottom|none';
 	$options[130]['default']			= 'none';
 	$options[130]['optional']			= 'no';
 	$options[130]['repeatable']			= 'no';
@@ -174,11 +174,11 @@ function getsetup_viz_barchart()
 	
 	$options[140]['name']				= 'legendTextColor';
 	$options[140]['description']		= 'color of the legend font';
-	$options[140]['detail']				= 'Default: black';
-	$options[140]['type']				= 'Text';
+	$options[140]['detail']				= 'Default: white';
+	$options[140]['type']				= 'Color';
 	$options[140]['link']				= 'link to further information..?';		
 	$options[140]['lookup']				= '';
-	$options[140]['default']			= 'black';
+	$options[140]['default']			= '#FFFFFF';
 	$options[140]['optional']			= 'no';
 	$options[140]['repeatable']			= 'no';
 	$options[140]['perdashboard']		= 'yes';
@@ -190,7 +190,7 @@ function getsetup_viz_barchart()
 	$options[150]['detail']				= 'Default: Verdana';
 	$options[150]['type']				= 'Dropdown';
 	$options[150]['link']				= 'link to further information..?';
-	$options[150]['lookup']				= '|Verdana|Arial Narrow|Arial'; 
+	$options[150]['lookup']				= 'Verdana|Arial Narrow|Arial'; 
 	$options[150]['default']			= 'Verdana';
 	$options[150]['optional']			= 'no';
 	$options[150]['repeatable']			= 'no';
@@ -211,11 +211,11 @@ function getsetup_viz_barchart()
 	
 	$options[170]['name']				= 'tooltipTextColor';
 	$options[170]['description']		= 'color of the tooltip';
-	$options[170]['detail']				= 'Default: black';
-	$options[170]['type']				= 'Text';
+	$options[170]['detail']				= 'Default: white';
+	$options[170]['type']				= 'Color';
 	$options[170]['link']				= 'link to further information..?';
 	$options[170]['lookup']				= ''; 
-	$options[170]['default']			= 'black';
+	$options[170]['default']			= '#FFFFFF';
 	$options[170]['optional']			= 'no';
 	$options[170]['repeatable']			= 'no';
 	$options[170]['perdashboard']		= 'yes';
@@ -226,7 +226,7 @@ function getsetup_viz_barchart()
 	$options[180]['detail']				= 'Default: Arial Narrow';
 	$options[180]['type']				= 'Dropdown';
 	$options[180]['link']				= 'link to further information..?';
-	$options[180]['lookup']				= '|Verdana|Arial Narrow|Arial'; 
+	$options[180]['lookup']				= 'Verdana|Arial Narrow|Arial'; 
 	$options[180]['default']			= 'Arial Narrow';
 	$options[180]['optional']			= 'no';
 	$options[180]['repeatable']			= 'no';
@@ -238,7 +238,7 @@ function getsetup_viz_barchart()
 	$options[190]['detail']				= 'Default: 9';
 	$options[190]['type']				= 'Dropdown';
 	$options[190]['link']				= 'link to further information..?';
-	$options[190]['lookup']				= '|8|9|10|11|12|13|14|15|16|17|18|19|20'; 
+	$options[190]['lookup']				= '8|9|10|11|12|13|14|15|16|17|18|19|20'; 
 	$options[190]['default']			= '9';
 	$options[190]['optional']			= 'no';
 	$options[190]['repeatable']			= 'no';
@@ -250,7 +250,7 @@ function getsetup_viz_barchart()
 	$options[200]['detail']				= 'The chart elements will be stacked if set to true, not, if false. Default: False';
 	$options[200]['type']				= 'Dropdown';
 	$options[200]['link']				= 'link to further information..?';
-	$options[200]['lookup']				= '|True|False'; 
+	$options[200]['lookup']				= 'True|False'; 
 	$options[200]['default']			= 'False';
 	$options[200]['optional']			= 'no';
 	$options[200]['repeatable']			= 'no';
@@ -259,11 +259,11 @@ function getsetup_viz_barchart()
 	
 	$options[230]['name']				= 'hAxis';
 	$options[230]['description']		= 'font color of the horizontal axis title';
-	$options[230]['detail']				= 'This is the font color of the horizontal axis title in the chart. Default: black';
-	$options[230]['type']				= 'Text';
+	$options[230]['detail']				= 'This is the font color of the horizontal axis title in the chart. Default: white';
+	$options[230]['type']				= 'Color';
 	$options[230]['link']				= 'link to further information..?';
 	$options[230]['lookup']				= ''; 
-	$options[230]['default']			= 'black';
+	$options[230]['default']			= '#FFFFFF';
 	$options[230]['optional']			= 'no';
 	$options[230]['repeatable']			= 'no';
 	$options[230]['perdashboard']		= 'yes';
@@ -283,11 +283,11 @@ function getsetup_viz_barchart()
 	
 	$options[250]['name']				= 'hAxisColor';
 	$options[250]['description']		= 'Color of the horizontal axis text';
-	$options[250]['detail']				= 'This is the color of the horizontal axis text. Default: black';
-	$options[250]['type']				= 'Text';
+	$options[250]['detail']				= 'This is the color of the horizontal axis text. Default: white';
+	$options[250]['type']				= 'Color';
 	$options[250]['link']				= 'link to further information..?';
 	$options[250]['lookup']				= ''; 
-	$options[250]['default']			= 'black';
+	$options[250]['default']			= '#FFFFFF';
 	$options[250]['optional']			= 'no';
 	$options[250]['repeatable']			= 'no';
 	$options[250]['perdashboard']		= 'yes';
@@ -295,11 +295,11 @@ function getsetup_viz_barchart()
 	
 	$options[260]['name']				= 'vAxis';
 	$options[260]['description']		= 'font color of the vertical axis title';
-	$options[260]['detail']				= 'This is the font color of the vertical axis of the chart. Default: black';
-	$options[260]['type']				= 'Text';
+	$options[260]['detail']				= 'This is the font color of the vertical axis of the chart. Default: color';
+	$options[260]['type']				= 'Color';
 	$options[260]['link']				= 'link to further information..?';
 	$options[260]['lookup']				= ''; 
-	$options[260]['default']			= 'black';
+	$options[260]['default']			= '#FFFFFF';
 	$options[260]['optional']			= 'no';
 	$options[260]['repeatable']			= 'no';
 	$options[260]['perdashboard']		= 'yes';
@@ -319,15 +319,39 @@ function getsetup_viz_barchart()
 	
 	$options[280]['name']				= 'vAxisColor';
 	$options[280]['description']		= 'Color of the vertical axis text';
-	$options[280]['detail']				= 'This is the color of the vertical axis text. Default: black';
-	$options[280]['type']				= 'Text';
+	$options[280]['detail']				= 'This is the color of the vertical axis text. Default: white';
+	$options[280]['type']				= 'Color';
 	$options[280]['link']				= 'link to further information..?';
 	$options[280]['lookup']				= ''; 
-	$options[280]['default']			= 'black';
+	$options[280]['default']			= '#FFFFFF';
 	$options[280]['optional']			= 'no';
 	$options[280]['repeatable']			= 'no';
 	$options[280]['perdashboard']		= 'yes';
 	$options[280]['dependenton']		= '';
+	
+	$options[290]['name']				= 'loadingHighlightColor';
+	$options[290]['description']		= 'Color of the highlight box that is shown when a module is loading';
+	$options[290]['detail']				= 'This is the color of the highlight box that is shown when a module is loading. Default: red';
+	$options[290]['type']				= 'Color';
+	$options[290]['link']				= 'link to further information..?';
+	$options[290]['lookup']				= ''; 
+	$options[290]['default']			= 'red';
+	$options[290]['optional']			= 'no';
+	$options[290]['repeatable']			= 'no';
+	$options[290]['perdashboard']		= 'yes';
+	$options[290]['dependenton']		= '';
+	
+	$options[300]['name']				= 'loadingHighlightThickness';
+	$options[300]['description']		= 'Thickness of the highlight box that is shown when a module is loading (in pixels)';
+	$options[300]['detail']				= 'This is the thickness of the highlight box that is shown when a module is loading (in pixels). Default: 2';
+	$options[300]['type']				= 'Text';
+	$options[300]['link']				= 'link to further information..?';
+	$options[300]['lookup']				= ''; 
+	$options[300]['default']			= '2';
+	$options[300]['optional']			= 'no';
+	$options[300]['repeatable']			= 'no';
+	$options[300]['perdashboard']		= 'yes';
+	$options[300]['dependenton']		= '';
 	
 	return($options);
 }
@@ -335,17 +359,22 @@ function getsetup_viz_barchart()
 function place_viz_barchart($sid, $value, $options, $setup)
 {
 	$dashboard_options = $options['dashboard_options'];
-	//added isStacked --Jaycen
-	echo '<div id="cover'.$sid.'">';
-	echo '<div id="velement'.$sid.'" style="position:absolute; top:'.($dashboard_options['y']).'; left:'.($dashboard_options['x']).'; width:'.($dashboard_options['width']).'; height:'.($dashboard_options['height']).';">';
-	echo '</div>';
+	$dashboard_options['x'] = str_replace('px','',$dashboard_options['x']);
+	$dashboard_options['y'] = str_replace('px','',$dashboard_options['y']);
+	$str='';
+	$str.= '<div id="cover'.$sid.'">';
+	$str.= '<div id="velement'.$sid.'" style="position:absolute;z-index:1; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']).'px; height:'.($dashboard_options['height']).'px;">';
+	$str.= '</div>';
+	$str.= '<div id="celement'.$sid.'" style="visibility:hidden; border:'.$dashboard_options['loadingHighlightThickness'].' px solid '.$dashboard_options['loadingHighlightColor'].'; position:absolute;z-index:2; top:'.($dashboard_options['y']).'px; left:'.($dashboard_options['x']).'px; width:'.($dashboard_options['width']-($dashboard_options['loadingHighlightThickness'] * 2)).'px; height:'.($dashboard_options['height']-($dashboard_options['loadingHighlightThickness']*2)).'px;">';
+	$str.= '</div>';
+	$str.= '</div>';
 	
 	$content = '';
 	if(isset($options['tablename']))
 	{
 		$content .= '
 		<script type="text/javascript">
-			var bar_chart'.$sid.';
+    		var bar_chart'.$sid.';
 			var data'.$sid.';
 			google.load(\'visualization\', \'1\', {\'packages\':[\'corechart\']});
 			google.setOnLoadCallback(drawChart'.$sid.');
@@ -377,22 +406,23 @@ function place_viz_barchart($sid, $value, $options, $setup)
 
     }
 
-	echo $content;
-	echo '</div>';
+	$str.= $content;
+	$str.='</div>';
 	
-	echo '	<script language="JavaScript" type="text/javascript">
+	$str.= '	<script language="JavaScript" type="text/javascript">
+				document.getElementById("celement'.$sid.'").style.border=\''.$dashboard_options['loadingHighlightThickness'].'px solid '.$dashboard_options['loadingHighlightColor'].'\';
 				function reload'.$sid.'(dashboard, response)
 				{
 					place_viz(dashboard, '.$sid.', {\'onUpdate\': function(response,xmlhttp){reload_update'.$sid.'(response)}});
 				}
 				function mark'.$sid.'(dashboard, response)
 				{
-					document.getElementById("velement'.$sid.'").style.border=\'2px solid red\';
+					document.getElementById("celement'.$sid.'").style.visibility=\'visible\';
 				}
 				function reload_update'.$sid.'(response)
 				{
 					eval(response);
-					bar_chart'.$sid.' = new google.visualization.barChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {backgroundColor:\''.($dashboard_options['backgroundColor']).'\',
+					bar_chart'.$sid.' = new google.visualization.BarChart(document.getElementById(\'velement'.$sid.'\')).draw(data'.$sid.', {backgroundColor:\''.($dashboard_options['backgroundColor']).'\',
 				fontSize:\''.($dashboard_options['fontSize']).'\', 
 				fontName:\''.($dashboard_options['fontName']).'\', 
 				legendTextStyle:{color:\''.($dashboard_options['legendTextColor']).'\',fontName:\''.($dashboard_options['legendfontName']).'\',fontsize:\''.($dashboard_options['legendTextSize']).'\'}, 
@@ -409,9 +439,11 @@ function place_viz_barchart($sid, $value, $options, $setup)
 				width:'.($dashboard_options['width']).', 
 				height:'.($dashboard_options['height']).', 
 				title:\''.$options['title'].'\'});
+					document.getElementById("celement'.$sid.'").style.visibility=\'hidden\';
 				
 				}
 			</script>';
+			return($str);
 }
 
 
@@ -462,7 +494,7 @@ function reload_viz_barchart($sid, $value, $options, $setup)
 	for($i=0; $i<count($name_type1);$i++)
 	{
 		if($i>0) $content .= ',';
-		$content .=	'{id: \''.$name_type1[$i][0].'\', label: \''.$name_type1[$i][1].'\', pattern:\'\' , type: \''.$name_type1[$i][2].'\'}';
+		$content .=	'{id: \''.$name_type1[$i][0].'\', label: \''.addslashes($name_type1[$i][1]).'\', pattern:\'\' , type: \''.$name_type1[$i][2].'\'}';
 	}
     $content .= '],	rows: [';
 	$i=0;
@@ -474,8 +506,8 @@ function reload_viz_barchart($sid, $value, $options, $setup)
 		for($j=0;$j<count($value);$j++)
 		{	
 			if($j>0) $content.=',';
-			if($name_type1[$j][2]=="number") $content .=  "{v: ".$value[$name_type1[$j][0]].", f:null}";
-			else $content .=  "{v: '".$value[$name_type1[$j][0]]."', f:null}";
+			if($name_type1[$j][2]=="number") $content .=  "{v: ".addslashes($value[$name_type1[$j][0]]).", f:null}";
+			else $content .=  "{v: '".addslashes($value[$name_type1[$j][0]])."', f:null}";
 			//var_dump($value);
 			//echo $value[$name_type1[0][0]];
 		}

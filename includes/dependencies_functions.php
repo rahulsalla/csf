@@ -1,5 +1,9 @@
 <?php
+$time = time();
+if(isset($_SESSION['timeout']) and ($_SESSION['timeout']>$time)) $_SESSION['timeout'] = $time + $config['configuration parameters']['parameters']['session_timeout'];
 
+require_once('optionFunctions.php');
+start_options_javascript();
 ### Identify and include available input modules
 $input_modules = scandir($configuration['input_path']);
 foreach($input_modules as $key => $input_module)
@@ -10,10 +14,10 @@ foreach($input_modules as $key => $input_module)
     else unset($input_modules[$key]);
 
 ### Identify available processing modules
-$processing_modules = scandir($configuration['processor_path']);
+$processing_modules = scandir($configuration['operator_path']);
 foreach($processing_modules as $key => $processing_module)
     if(pathinfo($processing_module,PATHINFO_EXTENSION)=='php') {
-	require_once($configuration['processor_path'].'/'.$processing_module);
+	require_once($configuration['operator_path'].'/'.$processing_module);
 	$processing_modules[$key] = pathinfo($processing_module,PATHINFO_FILENAME);
     }
     else unset($processing_modules[$key]);
@@ -153,6 +157,33 @@ function delete_station($id, $from_id)
 	global $db;
 	global $schema;
 	
+	$result = $db->fetchAll("select station.sid, value, station_variables.name as name from station, station_variables where (station_variables.name='options') and station.sid = " . $id);
+
+#encode moduels into array
+	foreach ($result as $value) {
+	    $modules[$value['sid']][$value['name']] = $value['value'];
+	}
+
+#find all the dashboards that are used in a specific modules
+	if(isset($modules)){
+	    foreach ($modules as $sid => $value) {
+		$option_field = json_decode($value['options'], true);
+		if(isset($option_field)) {
+		    foreach ($option_field as $dashboard => $options) {
+			if(is_int($dashboard)) {
+			    $dashboardlist[$dashboard][$sid]=$value['name'];
+			}
+		    }
+		}
+	    }
+	}
+#delete command for all dashboards
+	if(isset($dashboardlist)) {
+	    foreach ($dashboardlist as $dashboard => $value) {
+		$db->fetchAll('insert into inter_process ("value", "function", "sid") values (\''.$dashboard.'\',\'delete\',\''.$id.'\');');
+	    }
+	}
+	
 	$sql = "delete from ".$schema."station where sid=".$id;
 	$result			= $db->fetchAll($sql);
 	$sql = "delete from ".$schema."station_variables where (sid='".$id."') or (name='connect' and value='".$id."') or (name like any (select ('connect_' || svid || '%') as svid  from ".$schema."station_variables where (name='connect') and (value='".$id."')));";
@@ -256,6 +287,7 @@ function get_settings($id) {
 		$content	.= '<INPUT CLASS=SmallInput STYLE="text-align: left; padding-left: 5px" TYPE=text SIZE=8 id="variable_'.$variable['svid'].'" value=\''.$variable['value'].'\' onkeyup="$(\'node_'.$id.'\').childNodes[0].innerHTML = $(\'variable_'.$variable['svid'].'\').value;" onchange="validate(this.id, this.value,\''.$variable['type'].'\', {\'content_type\': \'JSON\', \'preloader\': \'preloader_s\', \'onUpdate\': function(response,xmlhttp){make_update(\'variable_'.$variable['svid'].'\',response)}});">';
 		break;
 	    case "Options":
+		$content	.= '<INPUT CLASS=SmallInput STYLE="text-align: left; padding-left: 5px" TYPE=text SIZE=8 id="variable_'.$variable['svid'].'" value=\''.$variable['value'].'\' onchange="alert(\'validate\');validate(this.id, this.value,\'option\', {\'content_type\': \'JSON\', \'preloader\': \'preloader_s\', \'onUpdate\': function(response,xmlhttp){make_update(\'variable_'.$variable['svid'].'\',response)}});">';
 		$content	.= '<input type ="button" value="+" height=15 width=15 onclick="openOptions('.$variable['svid'].','. $id .')">';
 		break;
 	    default:
@@ -285,6 +317,7 @@ function get_settings($id) {
 
 function save_coordinates($id, $value)
 {
+    $value = trim($value,'[]');
     $xy		 = explode(',',$value);
     global $db;
     global $schema;
@@ -338,7 +371,7 @@ function get_inter_process_updates() {
 	global $db;
 	global $schema;
 
-	$sql="delete from inter_process where timestamp < now()::timestamp without time zone - interval '20 seconds'";
+	$sql="delete from inter_process where timestamp < now()::timestamp without time zone - interval '100 seconds'";
 	$result	= $db->fetchAll($sql);
 	
 	if(!isset($_SESSION['timestamp'])) $_SESSION['timestamp']	= '2009-07-22 09:09:15.549657';
@@ -357,4 +390,5 @@ function delete_file($filePath){
 function add_processing_module($name) {
 
 }
+
 ?>

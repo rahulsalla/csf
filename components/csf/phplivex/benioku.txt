@@ -1,0 +1,77 @@
+﻿#########################################
+# PHPLiveX - PHP & Ajax Kütüphanesi	#
+# (C) Copyright 2006 Arda Beyazoğlu	#
+# Versiyon: 2.6				#
+# Web Sitesi: www.phplivex.com		#
+# İletişim: arda@beyazoglu.com		#
+# Sürüm Tarihi: 05.02.2010		#
+# Lisans: LGPL				#
+#########################################
+
+PHPLiveX 2.6
+--------------
+
+   Uzun bir aradan sonra çıkarılan bu yeni sürüm ile birlikte, çok sayıda yeni özellik, hata düzeltmeleri, performans ve güvenlik optimizasyonları yapıldı. Önceki sürümden bu yana, geçen yaklaşık 1.5 sene içerisinde gelen istekler dikkate alınarak gerekli değişiklikler ve düzeltmeler yapılmıştır. Sürümün getirdiği en önemli iki özellik, Ajax İle Dosya Yükleme özelliği ve Ajax History Eklentisidir. İşte tüm yeniliklerin listesi:
+
+- Yeni Özellikler
+
+    * Ajax History Eklentisi beta
+    * Ajax ile dosya yükleme
+
+    * Tüm JS fonksiyonları, yeni oluşturulan PLX json nesnesi ile daha kolay kullanılabilir hale getirildi
+    * Yeni parametreler eklendi: id, caching, history, timeout, onTimeout, onPreload
+    * Yeni metotlar eklendi: LoadJS, LoadCSS, AjaxifyUpload
+    * Form gönderimine dosya yükleme özelliği eklendi
+    * interval parametresi ile tekrarlı çalışan fonksiyonları durdurabilmek için Stop metodu eklendi
+    * Statik sınıf metotları için AjaxifyClasses ve AjaxifyClassMethods metotları eklendi
+    * Sınıf özellikleri de JavaScript tarafında kullanılabilir hale getirildi
+
+- Değişiklikler
+
+    * PHP Encoding değişkeni kaldırılıp, phplivex nesnesi oluşturma kısmına kondu
+    * Olay yöneticilerine ikinci bir argüman eklendi. (Bu sayede xmlhttp nesnesine ve phplivex parametrelerine ulaşılabilir)
+    * PHP Run metodunun kullanımı değişti.
+    * PHP AjaxifyObjects ve AjaxifyObjectMethods metotları için session kullanımı kaldırıldı
+    * onFinish fonksiyonunda false döndürüldüğünde, target ve onUpdate parametreleri yoksayıldı
+   
+- Düzeltmeler
+
+    * interval parametresi ile ilgili hatalar düzeltildi, fonksiyonu durdurabilmek için Stop metodu eklendi
+    * Ajax ile alınan verideki style kodları ie de çalışır hale getirildi
+    * Kullanıcı tanımlı olmayan fonksiyonların Ajaxify metotları ile kullanılması engellendi
+    * Form gönderiminde multiple select kullanıldığında ortaya çıkan hata düzeltildi
+    * target parametresine multiple select girildiğinde ortaya çıkan hata düzeltildi
+
+
+# AJAX ile Dosya Yükleme Özelliği (ÖNEMLİ)
+
+Dosyayı eş zamanlı olarak yükleyebilmek için, arşivden çıkardığınız "upload.cgi" isimli dosyaya ihtiyacınız var. 
+İndirdiğiniz arşivin içindeki upload.cgi isimli dosyayı sunucunuzda cgi betiklerinin çalıştığı bir yere taşımalısınız. 
+Örneğin, çoğu sunucuda cgi dosyalarınızı çalıştırabilmeniz için "cgi-bin" adlı bir klasör bulunur. Dosyanın çalışıtırabilir olmasına 
+dikkat ediniz. Daha detaylı bilgi için, "http://www.ricocheting.com/server/cgi.html" adresine göz atmanız önerilir.
+
+*** upload.cgi dosyasının ilk satırında perl yüklemesinin adresi olduğuna dikkat ediniz. (#!C:\perl\bin\perl.exe), (#!/usr/bin/perl) gibi
+
+Yerel dosyalarınızda çalışıyorsanız, bilgisayarınızda "PERL" yüklü olmalıdır. http://www.activestate.com/activeperl adresine girerek PERL installer 
+indirip bilgisayarınıza kurabilirsiniz. Tabiki apache sunucunuzda da PERL için birkaç ayar yapmanız gerekecektir. 
+
+*** Apache ana konfigürasyon dosyası olan "httpd.conf" içerisinde, 
+
+1) Cgi modülünün aktif olması gerektiğine dikkat ediniz. (LoadModule cgi_module modules/mod_cgi.so gibi)
+	
+
+2) Cgi çalışmasını istediğiniz dizinde ExecCGI seçeneğini girmelisiniz.
+
+	Örneğin, yerel sunucunuzun içerisindeki herhangi bir yerde çalışması için, belirlediğiniz DocumentRoot dizini için:
+
+	DocumentRoot "C:/Program Files/Apache Software Foundation/Apache2.2/htdocs"
+	<Directory "C:/Program Files/Apache Software Foundation/Apache2.2/htdocs">
+	    Options Indexes FollowSymLinks // Bu satırın sonuna bir de ExecCGI eklemelisiniz
+
+	    AllowOverride None
+	    Order allow,deny
+	    Allow from all
+
+	</Directory>
+
+3) #AddHandler cgi-script .cgi , satırının başındaki # işaretini kaldırmalısınız
